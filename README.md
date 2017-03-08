@@ -3,7 +3,7 @@
 Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](https://rikukali.users.cs.helsinki.fi/leiska)
-* [Linkki dokumentaatiooni](https://rikukali.users.cs.helsinki.fi/leiska/doc/dokumentaatio.pdf)
+* [Linkki dokumentaatiooni](https://github.com/rrrkkk/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 ## Työn aihe
 
