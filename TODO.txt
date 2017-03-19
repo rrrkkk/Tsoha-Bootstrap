@@ -1,0 +1,3 @@
+vote_list.html
+vote_show.html
+login.html
