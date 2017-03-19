@@ -1,8 +1,8 @@
 app/views/suunnitelmat
-+vote_list.html -metodi -reitti
-+vote_show.html -metodi -reitti
++vote_list.html +metodi +reitti
++vote_show.html +metodi +reitti
 +vote_edit.html -metodi -reitti
-+login.html -metodi -reitti
++login.html +metodi +reitti
 -vote_options_list -metodi -reitti
 -vote_options_show -metodi -reitti
 -vote_options_edit -metodi -reitti
