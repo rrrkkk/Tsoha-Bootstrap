@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Muokkaa äänestystä: Paras harjoitustehtävän aihe</h1>
+
+  <form>
+    <div class="form-group">
+      <label>Nimi</label>
+      <input class="form-control" value="Paras harjoitustehtävän aihe" type="text">
+    </div>
+    <div class="form-group">
+      <label>Alkupäivä</label>
+      <input class="form-control" value="19.3.2017" type="text">
+    </div>
+    <div class="form-group">
+      <label>Loppupäivä</label>
+      <input class="form-control" value="19.5.2017" type="text">
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox">
+        Anomuumi?
+      </label>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+  </form>
+{% endblock %}
