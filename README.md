@@ -12,5 +12,8 @@ Yleisiä linkkejä:
 ## Suunnitelmia
 
 Äänestykset [linkki luetteloon](https://rikukali.users.cs.helsinki.fi/leiska/vote)
+
 Äänestyksen tiedot [linkki tietosivuun](https://rikukali.users.cs.helsinki.fi/leiska/vote/1)
+
 Kirjautuminen [linkki kirjautumissivuun](https://rikukali.users.cs.helsinki.fi/leiska/login)
+
