@@ -24,10 +24,7 @@ CREATE TABLE poll (
 CREATE TABLE voters (
 	poll_id INTEGER,
 	person_id INTEGER,
-	name VARCHAR(64),
-	startdate DATE,
-	enddate DATE,
-	anonymous BOOLEAN,
+	time DATETIME,
 	FOREIGN KEY (poll_id) REFERENCES poll(id),
 	FOREIGN KEY (person_id) REFERENCES person(id),
 	PRIMARY KEY (poll_id, person_id)
