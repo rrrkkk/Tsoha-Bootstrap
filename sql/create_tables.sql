@@ -40,11 +40,12 @@ CREATE TABLE poll_option (
 );
 
 CREATE TABLE vote (
+	id INTEGER NOT NULL AUTO_INCREMENT,
 	poll_option_id INTEGER,
 	poll_id INTEGER,
 	time DATETIME,
 	FOREIGN KEY (poll_option_id) REFERENCES poll_option(id),
 	FOREIGN KEY (poll_id) REFERENCES poll(id),
-	PRIMARY KEY (poll_option_id, poll_id)
+	PRIMARY KEY (id)
 );
 
