@@ -11,6 +11,10 @@ $routes->get('/vote/1', function() {
     HelloWorldController::vote_show();
 });
 
+$routes->get('/vote/edit/1', function() {
+    HelloWorldController::vote_edit();
+});
+
 $routes->get('/login', function() {
     HelloWorldController::login();
 });

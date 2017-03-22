@@ -17,5 +17,17 @@ Yleisiä linkkejä:
 
 Äänestyksen tiedot [linkki tietosivuun](https://rikukali.users.cs.helsinki.fi/leiska/vote/1)
 
+Äänestyksen muokkaus [linkki muokkaussivuun](https://rikukali.users.cs.helsinki.fi/leiska/vote/edit/1)
+
+Äänestystulokset kesken
+
+Äänestysaktiviteetti kesken
+
+Käyttäjälista kesken
+
+Käyttäjän tiedot kesken
+
+Käyttäjän muokkaus kesken
+
 Kirjautuminen [linkki kirjautumissivuun](https://rikukali.users.cs.helsinki.fi/leiska/login)
 
