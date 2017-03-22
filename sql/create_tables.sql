@@ -10,6 +10,18 @@ CREATE TABLE person (
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE poll_type (
+	id INTEGER NOT NULL AUTO_INCREMENT,
+	name VARCHAR(64),
+	PRIMARY KEY (id)
+);
+-- this is a static helper table, so we init it here. any significant changes here require
+-- also changes to program logic.
+INSERT INTO poll_type VALUES
+(1, 'Näytä nykyinen kärki'),
+(2, 'Näytä kaikkien ehdokkaiden äänimäärät'),
+(3, 'Älä näytä mitään tietoa äänestyksen kulusta');
+
 CREATE TABLE poll (
 	id INTEGER NOT NULL AUTO_INCREMENT,
 	person_id INTEGER,
@@ -17,7 +29,9 @@ CREATE TABLE poll (
 	startdate DATE,
 	enddate DATE,
 	anonymous BOOLEAN,
+	poll_type_id INTEGER,
 	FOREIGN KEY (person_id) REFERENCES person(id),
+	FOREIGN KEY (poll_type_id) REFERENCES poll_type(id),
 	PRIMARY KEY (id)
 );
 
