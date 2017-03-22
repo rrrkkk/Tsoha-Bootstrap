@@ -19,6 +19,12 @@ Yleisiä linkkejä:
 
 Äänestyksen muokkaus [linkki muokkaussivuun](https://rikukali.users.cs.helsinki.fi/leiska/vote/edit/1)
 
+Äänestysvaihtoehtolista kesken
+
+Äänestysvaihtoehdon tiedot kesken
+
+Äänestysvaihtoehtojen muokkaus kesken
+
 Äänestystulokset kesken
 
 Äänestysaktiviteetti kesken
