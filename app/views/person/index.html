@@ -14,7 +14,6 @@
       <th>Nimi</th>
       <th>Käyttäjätunnus</th>
       <th>Sähköposti</th>
-      <th>Salasana</th>
       <th>Ylläpitäjä?</th>
       <th></th>
     </tr>
@@ -26,7 +25,6 @@
       <td><a href="{{base_path}}/game/{{person.id}}">{{person.name}}</td>
       <td>{{person.username}}</td>
       <td>{{person.email}}</td>
-      <td>{{person.password}}</td>
       <td>
         {% if person.admin %}
         <label class="label label-success">kyllä</label>
