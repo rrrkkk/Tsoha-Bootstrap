@@ -8,6 +8,10 @@ $routes->get('/person', function() {
     PersonController::index();
 });
 
+$routes->get('/person/:id', function($id){
+    PersonController::show($id);
+});
+
 $routes->get('/vote', function() {
     HelloWorldController::vote_list();
 });
