@@ -12,7 +12,7 @@
         'resource' => 'pgsql:'
       ),
       'mysql' => array(
-        'resource' => 'mysql:unix_socket=/home/rikukali/mysql/socket;dbname=leiska',
+        'resource' => 'mysql:unix_socket=/home/rikukali/mysql/socket;dbname=leiska;charset=utf8',
         'username' => 'root',
         'password' => 'leiska007'
       )
