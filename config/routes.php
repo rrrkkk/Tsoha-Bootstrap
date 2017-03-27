@@ -1,7 +1,7 @@
 <?php
 
 $routes->get('/', function() {
-    HelloWorldController::index();
+    MainController::index();
 });
 
 $routes->get('/person', function() {
