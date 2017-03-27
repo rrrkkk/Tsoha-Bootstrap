@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Henkilön tiedot</h1>
+  <!-- Painikkeet tähän -->
+  <p>
+    <button class="btn btn-danger">Poista</button> <a href="#" class="btn btn-default">Muokkaa</a>
+  </p>
+  <!-- Tiedot tulee listana tähän -->
+  <ul>
+    <li><strong>Nimi:</strong>{{person.name}}</li>
+    <li><strong>Käyttäjätunnus:</strong>{{person.username}}</li>
+    <li><strong>Sähköposti:</strong>{{person.email}}</li>
+    <li><strong>Salasana:</strong>{{person.password}}</li>
+    <li>
+      <strong>Ylläpitäjä?</strong>
+      {% if person.admin %}
+      <label class="label label-success">kyllä</label>
+      {% else %}
+      <label class="label label-danger">ei</label>
+      {% endif %}
+    </li>
+  </ul>
+{% endblock %}
