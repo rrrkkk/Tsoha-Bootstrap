@@ -1,5 +1,7 @@
 <?php
 
+require 'app/models/person.php';
+
 class HelloWorldController extends BaseController{
 
     public static function index(){
@@ -24,6 +26,9 @@ class HelloWorldController extends BaseController{
 
     public static function sandbox(){
         // Testaa koodiasi täällä
-        View::make('helloworld.html');
+        $riku = Person::find(1);
+        $persons = Person::all();
+        Kint::dump($persons);
+        Kint::dump($riku);
     }
 }
