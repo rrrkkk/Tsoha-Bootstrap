@@ -29,8 +29,8 @@ class Person extends BaseModel {
     } # all
 
     public static function find($id) {
-        $query = DB::connection()->prepare("SELECT * FROM person WHERE id = $id LIMIT 1");
-        $query->execute();
+        $query = DB::connection()->prepare("SELECT * FROM person WHERE id = :id LIMIT 1");
+        $query->execute(array('id' => $id));
         $row = $query->fetch();
 
         if ($row) {
