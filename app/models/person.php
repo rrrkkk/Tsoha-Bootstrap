@@ -30,7 +30,8 @@ class Person extends BaseModel {
 
     public static function find($id) {
         $query = DB::connection()->prepare("SELECT * FROM person WHERE id = :id LIMIT 1");
-        $query->execute(array('id' => $id));
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->execute();
         $row = $query->fetch();
 
         if ($row) {
