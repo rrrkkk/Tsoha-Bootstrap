@@ -5,8 +5,8 @@ INSERT INTO person VALUES
 (2, 'Testi Käyttäjä', 'test', 'foo@foo.fi', '$2y$10$aII9rvfHILwBwlaDeCV7O.b9B2NUACHOKREiGRCcfB94420e/8lD2', FALSE); -- foo123
 
 INSERT INTO poll VALUES
-(1, 1, 'Paras harjoitustyön aihe', '2017-03-19', '2017-05-19', 0, 1),
-(2, 1, 'Kiinnostavin muumihahmo', '2017-01-01', '2017-12-31', 1, 3);
+(1, 1, 'Paras harjoitustyön aihe', '2017-03-19', '2017-05-19', FALSE, 1),
+(2, 1, 'Kiinnostavin muumihahmo', '2017-01-01', '2017-12-31', TRUE, 3);
 
 INSERT INTO voters VALUES
 (1, 2, '2017-03-20 12:34:56');
