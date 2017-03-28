@@ -33,7 +33,7 @@ CREATE TABLE poll (
 CREATE TABLE voters (
 	poll_id INTEGER REFERENCES poll(id),
 	person_id INTEGER REFERENCES person(id),
-	time DATETIME,
+	time DATE,
 	PRIMARY KEY (poll_id, person_id)
 );
 
@@ -48,6 +48,6 @@ CREATE TABLE vote (
 	id SERIAL PRIMARY KEY,
 	poll_option_id INTEGER REFERENCES poll_option(id),
 	poll_id INTEGER REFERENCES poll(id),
-	time DATETIME
+	time DATE
 );
 
