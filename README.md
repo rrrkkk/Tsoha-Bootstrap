@@ -13,11 +13,11 @@ Yleisiä linkkejä:
 
 Äänestysjärjestelmä [linkki päävalikkoon](https://rikukali.users.cs.helsinki.fi/leiska/)
 
-Henkilölista [linkki listausssivuun](https://rikukali.users.cs.helsinki.fi/leiska/person)
+Henkilölista [linkki listaussivuun](https://rikukali.users.cs.helsinki.fi/leiska/person)
 
-Henkilön tiedot [linkki listausssivuun](https://rikukali.users.cs.helsinki.fi/leiska/person/1)
+Henkilön tiedot [linkki tietosivuun](https://rikukali.users.cs.helsinki.fi/leiska/person/1)
 
-Henkilön lisäys [linkki listausssivuun](https://rikukali.users.cs.helsinki.fi/leiska/person/add)
+Henkilön lisäys [linkki lisäyssivuun](https://rikukali.users.cs.helsinki.fi/leiska/person/add)
 
 ## Suunnitelmia
 
