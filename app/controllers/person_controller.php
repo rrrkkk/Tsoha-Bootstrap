@@ -12,6 +12,10 @@ class PersonController extends BaseController {
         View::make('person/show.html', array('person' => $person));
     }
 
+    public static function create() {
+        View::make('person/new.html');
+    }
+
     public static function store(){
         $params = $_POST;
         $person = new Person(array(
