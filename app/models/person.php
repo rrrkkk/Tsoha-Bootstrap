@@ -56,12 +56,17 @@ class Person extends BaseModel {
                                          INTO person (name, username, email, password, admin)
                                          VALUES (:name, :username, :email, :password, :admin)
                                          RETURNING id');
-        $query->bindValue(':name', $this->name, PDO::PARAM_STR);
+        /* $query->bindValue(':name', $this->name, PDO::PARAM_STR);
         $query->bindValue(':username', $this->username, PDO::PARAM_STR);
         $query->bindValue(':email', $this->email, PDO::PARAM_STR);
         $query->bindValue(':password', $this->password, PDO::PARAM_STR);
         $query->bindValue(':admin', $this->admin, PDO::PARAM_BOOL);
-        $query->execute();
+        $query->execute(); */
+        $query->execute(array('name' => $this->name,
+                              'username' => $this->username,
+                              'email' => $this->email,
+                              'password' => $this->password,
+                              'admin' => $this->admin));
         $row = $query->fetch();
         $this->id = $row['id'];
     } # save
