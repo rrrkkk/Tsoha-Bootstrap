@@ -7,11 +7,19 @@ Yleisiä linkkejä:
 
 ## Työn aihe
 
-Äänestys [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Aanestys.html) 
+Äänestys [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Aanestys.html)
 
-## Suunnitelmia
+## Valmista tai ainakin osa toiminnallisuudesta tehty
 
 Äänestysjärjestelmä [linkki päävalikkoon](https://rikukali.users.cs.helsinki.fi/leiska/)
+
+Henkilölista [linkki listausssivuun](https://rikukali.users.cs.helsinki.fi/leiska/person)
+
+Henkilön tiedot [linkki listausssivuun](https://rikukali.users.cs.helsinki.fi/leiska/person/1)
+
+Henkilön lisäys [linkki listausssivuun](https://rikukali.users.cs.helsinki.fi/leiska/person/add)
+
+## Suunnitelmia
 
 Äänestykset [linkki luetteloon](https://rikukali.users.cs.helsinki.fi/leiska/vote)
 
@@ -28,12 +36,6 @@ Yleisiä linkkejä:
 Äänestystulokset kesken
 
 Äänestysaktiviteetti kesken
-
-Käyttäjälista kesken
-
-Käyttäjän tiedot kesken
-
-Käyttäjän muokkaus kesken
 
 Kirjautuminen [linkki kirjautumissivuun](https://rikukali.users.cs.helsinki.fi/leiska/login)
 
