@@ -49,6 +49,22 @@ class Person extends BaseModel {
         return null;
 
     } # find
+
+    public function save(){
+        $query
+            = DB::connection()->prepare('INSERT
+                                         INTO person (name, username, email, password, admin)
+                                         VALUES (:name, :username, :email, :password, :admin)
+                                         RETURNING id');
+        $query->bindValue(':name', $this->name, PDO::PARAM_STR);
+        $query->bindValue(':username', $this->username, PDO::PARAM_STR);
+        $query->bindValue(':email', $this->email, PDO::PARAM_STR);
+        $query->bindValue(':password', $this->password, PDO::PARAM_STR);
+        $query->bindValue(':admin', $this->admin, PDO::PARAM_BOOL);
+        $query->execute();
+        $row = $query->fetch();
+        $this->id = $row['id'];
+    } # save
 }
 
 ?>

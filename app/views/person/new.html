@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Lisää henkilö</h1>
+
+<form method="post" action="{{base_path}}/person">
+
+  <div class="form-group">
+    <label>Nimi</label>
+    <input name="name" class="form-control" type="text">
+  </div>
+  
+  <div class="form-group">
+    <label>Käyttäjätunnus</label>
+    <input name="username" class="form-control" type="text">
+  </div>
+  
+  <div class="form-group">
+    <label>Sähköposti</label>
+    <input name="email" class="form-control" type="text">
+  </div>
+  
+  <div class="form-group">
+    <label>Salasana</label>
+    <input name="password_plain" class="form-control" type="password">
+  </div>
+  
+  <div class="checkbox">
+    <label>Ylläpitäjä?</label>
+    <input name="admin" type="checkbox">
+  </div>
+
+</form>
+
+{% endblock %}

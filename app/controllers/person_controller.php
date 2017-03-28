@@ -11,6 +11,23 @@ class PersonController extends BaseController {
         $person = Person::find($id);
         View::make('person/show.html', array('person' => $person));
     }
-}
+
+    public static function store(){
+        $params = $_POST;
+        $person = new Person(array(
+            'name' => $params['name'],
+            'username' => $params['username'],
+            'email' => $params['email'],
+            'password' => hash("sha256", $params['password_plain']), # XXX this is a bootleg
+            'admin' => $params['admin']
+        ));
+        
+        $person->save();
+        
+        Redirect::to('/person/' . $person->id, array('message' => 'Henkilö on lisätty.'));
+    
+    } # store
+    
+} # PersonController
 
 ?>

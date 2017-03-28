@@ -8,8 +8,16 @@ $routes->get('/person', function() {
     PersonController::index();
 });
 
+$routes->get('/person/new', function(){
+    PersonController::create();
+});
+
 $routes->get('/person/:id', function($id){
     PersonController::show($id);
+});
+
+$routes->post('/person', function(){
+    PersonController::store();
 });
 
 $routes->get('/vote', function() {
