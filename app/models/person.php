@@ -61,7 +61,7 @@ class Person extends BaseModel {
         $query->bindValue(':password', $this->password, PDO::PARAM_STR);
         $query->bindValue(':admin', $this->admin, PDO::PARAM_BOOL);
         $query->execute();
-        $this->id = $query->lastInsertId();
+        $this->id = DB::connection()->lastInsertId();
     } # save
 }
 
