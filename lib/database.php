@@ -10,11 +10,9 @@
         try {
             // Alustetaan PDO
             if(isset($config['username'])){
-                $connection = new PDO($config['resource'], $config['username'], $config['password'],
-                array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+              $connection = new PDO($config['resource'], $config['username'], $config['password']);
             }else{
-                $connection = new PDO($config['resource'],
-                array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+              $connection = new PDO($config['resource']);
             }
              // Asetetaan tietokannan kenttien koodaukseksi utf8
             $connection->exec('SET NAMES UTF8');
