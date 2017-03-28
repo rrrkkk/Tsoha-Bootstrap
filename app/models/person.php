@@ -55,6 +55,7 @@ class Person extends BaseModel {
             = DB::connection()->prepare('INSERT
                                          INTO person (name, username, email, password, admin)
                                          VALUES (:name, :username, :email, :password, :admin)');
+        DB::connection()->beginTransaction();
         $query->bindValue(':name', $this->name, PDO::PARAM_STR);
         $query->bindValue(':username', $this->username, PDO::PARAM_STR);
         $query->bindValue(':email', $this->email, PDO::PARAM_STR);
@@ -62,6 +63,7 @@ class Person extends BaseModel {
         $query->bindValue(':admin', $this->admin, PDO::PARAM_BOOL);
         $query->execute();
         $this->id = DB::connection()->lastInsertId();
+        DB::connection()->commit();
     } # save
 }
 
