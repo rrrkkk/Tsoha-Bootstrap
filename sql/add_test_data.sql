@@ -1,8 +1,8 @@
 -- Lisää INSERT INTO lauseet tähän tiedostoon
 
 INSERT INTO person VALUES
-(1, 'Riku Kalinen', 'riku', 'riku.kalinen@helsinki.fi', '$2y$10$aII9rvfHILwBwlaDeCV7O.b9B2NUACHOKREiGRCcfB94420e/8lD2', TRUE), -- foo123
-(2, 'Testi Käyttäjä', 'test', 'foo@foo.fi', '$2y$10$aII9rvfHILwBwlaDeCV7O.b9B2NUACHOKREiGRCcfB94420e/8lD2', FALSE); -- foo123
+(1, 'Riku Kalinen', 'riku', 'riku.kalinen@helsinki.fi', '02b353bf5358995bc7d193ed1ce9c2eaec2b694b21d2f96232c9d6a0832121d1', TRUE), -- foo123
+(2, 'Testi Käyttäjä', 'test', 'foo@foo.fi', '02b353bf5358995bc7d193ed1ce9c2eaec2b694b21d2f96232c9d6a0832121d1', FALSE); -- foo123
 
 INSERT INTO poll VALUES
 (1, 1, 'Paras harjoitustyön aihe', '2017-03-19', '2017-05-19', FALSE, 1),
