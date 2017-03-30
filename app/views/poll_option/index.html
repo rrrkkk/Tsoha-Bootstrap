@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>Äänestysvaihtoehdot äänestykseen {{poll.poll_name}}</h1>
+<h1>Äänestysvaihtoehdot äänestykseen {{poll.name}}</h1>
 
 <p>
   <a href="{{base_path}}/poll_option/new/{{poll_option.poll_id}}" class="btn btn-success">Lisää äänestysvaihtoehto</a>
