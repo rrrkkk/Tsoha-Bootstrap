@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Äänestykset</h1>
+
+<p>
+  <a href="{{base_path}}/poll/new" class="btn btn-success">Lisää äänestys</a>
+</p>
+
+<table class="table table-striped table-bordered">
+  
+  <thead>
+    <tr>
+      <th>Vastuuhenkilö</th>
+      <th>Nimi</th>
+      <th>Alkupäivä</th>
+      <th>Loppupäivä</th>
+      <th>Anonyymi?</th>
+      <th>Tyyppi</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for poll in polls %}
+    <tr>
+      <td>{{poll.person_id}}</td>
+      <td><a href="{{base_path}}/poll/{{poll.id}}">{{poll.name}}</a></td>
+      <td>{{poll.startdate}}</td>
+      <td>{{poll.enddate}}</td>
+      <td>
+        {% if poll.anonymous %}
+        <label class="label label-success">kyllä</label>
+        {% else %}
+        <label class="label label-danger">ei</label>
+        {% endif %}
+      </td>
+      <td>{{poll.poll_type_id}}</td>
+      <td>
+	<a class="btn btn-default btn-sm" href="{{base_path}}/poll/{{poll.id}}/edit">Muokkaa</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+
+</table>
+
+{% endblock %}

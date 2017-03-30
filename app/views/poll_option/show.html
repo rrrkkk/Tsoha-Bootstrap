@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Äänestysvaihtoehdon tiedot</h1>
+  <p>
+    <button class="btn btn-danger">Poista</button> <a href="#" class="btn btn-default">Muokkaa</a>
+  </p>
+  <ul>
+    <li><strong>Äänestys:</strong>{{poll.poll_name}}</li>
+    <li><strong>Nimi:</strong>{{poll_option.name}}</li>
+    <li><strong>Kuvaus:</strong>{{poll_option.description}}</li>
+  </ul>
+{% endblock %}

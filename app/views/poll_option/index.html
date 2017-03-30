@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Äänestysvaihtoehdot äänestykseen {{poll.poll_name}}</h1>
+
+<p>
+  <a href="{{base_path}}/poll_option/new/{{poll_option.poll_id}}" class="btn btn-success">Lisää äänestysvaihtoehto</a>
+</p>
+
+<table class="table table-striped table-bordered">
+  
+  <thead>
+    <tr>
+      <th>Nimi</th>
+      <th>Kuvaus</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for poll_option in poll_options %}
+    <tr>
+      <td>{{poll_option.name}}</td>
+      <td>{{poll_option.description}}</td>
+      <td>
+	<a class="btn btn-default btn-sm" href="{{base_path}}/poll_option/{{poll_option.id}}/edit">Muokkaa</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+
+</table>
+
+{% endblock %}

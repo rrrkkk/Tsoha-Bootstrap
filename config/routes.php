@@ -20,12 +20,52 @@ $routes->post('/person', function(){
     PersonController::store();
 });
 
+$routes->get('/poll', function() {
+    PollController::index();
+});
+
+$routes->get('/poll/new', function(){
+    PollController::create();
+});
+
+$routes->get('/poll/:id', function($id){
+    PollController::show($id);
+});
+
+/* XXX does not work, yet */
+$routes->get('/poll/edit/:id', function($id) {
+    PollController::edit($id);
+});
+
+$routes->post('/poll', function(){
+    PollController::store();
+});
+
+$routes->get('/poll_option/poll/:poll_id', function($poll_id) {
+    PollOptionController::index($poll_id);
+});
+
+$routes->get('/poll_option/new/:poll_id', function($poll_id){
+    PollOptionController::create($poll_id);
+});
+
+$routes->get('/poll_option/:id', function($id){
+    PollOptionController::show($id);
+});
+
+$routes->post('/poll_option', function(){
+    PollOptionController::store();
+});
+
+/*
 $routes->get('/vote', function() {
     HelloWorldController::vote_list();
 });
+
 $routes->get('/vote/1', function() {
     HelloWorldController::vote_show();
 });
+*/
 
 $routes->get('/vote/edit/1', function() {
     HelloWorldController::vote_edit();

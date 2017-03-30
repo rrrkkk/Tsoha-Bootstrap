@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Lisää äänestys</h1>
+
+<form method="post" action="{{base_path}}/poll">
+
+  <div class="form-group">
+    <label>Vastuuhenkilö</label>
+    <input name="person_id" class="form-control" type="number">
+  </div>
+  
+  <div class="form-group">
+    <label>Nimi</label>
+    <input name="name" class="form-control" type="text">
+  </div>
+  
+  <div class="form-group">
+    <label>Alkupäivä</label>
+    <input name="startdate" class="form-control" type="date">
+  </div>
+  
+  <div class="form-group">
+    <label>Loppupäivä</label>
+    <input name="enddate" class="form-control" type="date">
+  </div>
+  
+  <div class="form-group">
+    <label>Anomuumi?</label>
+    <select name="anonymous">
+      <option value="0">Ei 
+      <option value="1" selected>Kyllä
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Tyyppi</label>
+    <input name="poll_type_id" class="form-control" type="number">
+  </div>
+  
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Lisää</button>
+  </div>
+
+</form>
+
+{% endblock %}

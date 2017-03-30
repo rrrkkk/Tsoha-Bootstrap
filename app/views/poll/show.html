@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Äänestyksen tiedot</h1>
+  <p>
+    <button class="btn btn-danger">Poista</button> <a href="#" class="btn btn-default">Muokkaa</a>
+  </p>
+  <ul>
+    <li><strong>Vastuuhenkilö:</strong>{{poll.person_id}}</li>
+    <li><strong>Nimi:</strong>{{poll.name}}</li>
+    <li><strong>Alkupäivä:</strong>{{poll.startdate}}</li>
+    <li><strong>Loppupäivä:</strong>{{poll.enddate}}</li>
+    <li>
+      <strong>Anonyymi?</strong>
+      {% if poll.anonymous %}
+      <label class="label label-success">kyllä</label>
+      {% else %}
+      <label class="label label-danger">ei</label>
+      {% endif %}
+    </li>
+    <li><strong>Tyyppi:</strong>{{poll.poll_type_id}}</li>
+  </ul>
+{% endblock %}
