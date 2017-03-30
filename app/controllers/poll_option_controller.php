@@ -4,7 +4,7 @@ class PollOptionController extends BaseController {
 
     public static function index($poll_id) {
         $poll_options = PollOption::all($poll_id);
-        $poll = Poll::find($poll_option->poll_id);
+        $poll = Poll::find($poll_id);
         View::make('poll_option/index.html',
                    array('poll_options' => $poll_options, 'poll' => $poll));
     }
