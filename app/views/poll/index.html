@@ -41,7 +41,13 @@
         <label class="label label-danger">ei</label>
         {% endif %}
       </td>
-      <td>{{poll.poll_type_id}}</td>
+      <td>
+	{% for poll_type in poll_types %}
+	{% if poll.poll_type_id == poll_type.id %}
+	{{poll_type.name}}
+	{% endif %}
+	{% endfor %}
+      </td>
       <td>
 	<a class="btn btn-default btn-sm" href="{{base_path}}/poll/{{poll.id}}/edit">XXX TBD</a>
 	<!-- Muokkaa -->
