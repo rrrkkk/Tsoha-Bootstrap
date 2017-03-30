@@ -3,7 +3,7 @@
 class MainController extends BaseController{
 
     public static function index(){
-        View::make('suunnitelmat/index.html');
+        View::make('main/index.html');
     }
 
     public static function vote_list(){
