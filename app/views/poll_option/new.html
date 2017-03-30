@@ -1,14 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>Lisää äänestysvaihtoehto</h1>
+<h1>Lisää äänestysvaihtoehto äänestykseen {{poll.name}}</h1>
 
 <form method="post" action="{{base_path}}/poll_option">
 
-  <div class="form-group">
-    <label>Äänestys</label>
-    <input name="poll_id" class="form-control" type="number" value="{{poll.id}}">
-  </div>
+  <input name="poll_id" class="form-control" type="hidden" value="{{poll.id}}">
   
   <div class="form-group">
     <label>Nimi</label>
