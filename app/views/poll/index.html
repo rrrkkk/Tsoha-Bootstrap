@@ -24,7 +24,13 @@
   <tbody>
     {% for poll in polls %}
     <tr>
-      <td>{{poll.person_id}}</td>
+      <td>
+	{% for person in persons %}
+	{% if poll.person_id = person.id %}
+	{{person.name}}
+	{% endif %}
+	{% endfor %}
+      </td>
       <td><a href="{{base_path}}/poll/{{poll.id}}">{{poll.name}}</a></td>
       <td>{{poll.startdate}}</td>
       <td>{{poll.enddate}}</td>
