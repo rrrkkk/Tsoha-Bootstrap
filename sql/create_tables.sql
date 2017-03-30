@@ -19,6 +19,7 @@ INSERT INTO poll_type VALUES
 (1, 'Näytä nykyinen kärki'),
 (2, 'Näytä kaikkien ehdokkaiden äänimäärät'),
 (3, 'Älä näytä mitään tietoa äänestyksen kulusta');
+ALTER SEQUENCE poll_type_id_seq RESTART 4;
 
 CREATE TABLE poll (
 	id SERIAL PRIMARY KEY,
