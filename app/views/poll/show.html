@@ -2,7 +2,9 @@
 {% block content %}
   <h1>Äänestyksen tiedot</h1>
   <p>
-    <button class="btn btn-danger">Poista</button> <a href="#" class="btn btn-default">Muokkaa</a>
+    <button class="btn btn-danger">Poista</button>
+    <a href="{{base_path}}/poll/{{poll.id}}/edit" class="btn btn-default">Muokkaa</a>
+    <a href="{{base_path}}/poll_option/poll/{{poll.id}}" class="btn btn-default">Vaihtoehdot</a>
   </p>
   <ul>
     <li><strong>Vastuuhenkilö:</strong>{{poll.person_id}}</li>
