@@ -22,7 +22,7 @@ class Poll extends BaseModel {
                     'startdate' => $row['startdate'],
                     'enddate' => $row['enddate'],
                     'anonymous' => $row['anonymous'],
-                    'poll_type_id' => $row['poll_type_is']));
+                    'poll_type_id' => $row['poll_type_id']));
         }
         
         return $polls;
