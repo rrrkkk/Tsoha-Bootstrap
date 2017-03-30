@@ -26,7 +26,7 @@
     <tr>
       <td>
 	{% for person in persons %}
-	{% if poll.person_id = person.id %}
+	{% if poll.person_id == person.id %}
 	{{person.name}}
 	{% endif %}
 	{% endfor %}
