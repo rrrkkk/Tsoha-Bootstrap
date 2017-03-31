@@ -12,7 +12,9 @@ Linkki sovellukseen, lähde Labtool: http://nykanenj.users.cs.helsinki.fi/Tsoha/
 
 Linkki sovellukseen, lähde GitHub README.md: http://nykanenj.users.cs.helsinki.fi/Tsoha/
 
-Ladattu 31.3.2017 klo 09:55
+Ladattu (git clone) 31.3.2017 klo 09:55
+
+Testejä ajettu Firefoxilla 31.3.2017 klo 09:55 - 12:15
 
 
 2. Tehdyt toimenpiteet
@@ -36,6 +38,8 @@ Käyty läpi Overview - sivu: .../overview
 Käyty läpi Add - sivu: .../add
 
 Käyty läpi Edit - sivu: .../edit
+
+Käyty läpi Query - sivu: .../query
 
 Käyty läpi Remove - sivu: .../remove
 
@@ -82,4 +86,4 @@ Luokka Datacruncher käsittelee taulua questiondata. Mikäli ko taulu jaetaan os
 
 Login - sivu ottaa tietoja vastaan, mutta tällä ei näytä olevan vaikutusta. Kirjautumista ei tosin ole tarvinnutkaan toteuttaa vielä tässä vaiheessa.
 
-Edit- ja Remove - sivut ovat suunnitelman asteella. Niitähän ei tosin tarvittukaan vielä.
+Query, Edit- ja Remove - sivut ovat suunnitelman asteella. Niitähän ei tosin tarvittukaan vielä.
