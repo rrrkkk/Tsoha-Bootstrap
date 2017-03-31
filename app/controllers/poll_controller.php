@@ -4,18 +4,14 @@ class PollController extends BaseController {
 
     public static function index() {
         $polls = Poll::all();
-        $persons = Person::all();
-        $poll_types = PollType::all();
         View::make('poll/index.html',
-                   array('polls' => $polls, 'persons' => $persons, 'poll_types' => $poll_types));
+                   array('polls' => $polls));
     }
 
     public static function show($id) {
         $poll = Poll::find($id);
-        $person = Person::find($poll->person_id);
-        $poll_type = PollType::find($poll->poll_type_id);
         View::make('poll/show.html',
-                   array('poll' => $poll, 'person' => $person, 'poll_type' => $poll_type));
+                   array('poll' => $poll));
     }
 
     public static function create() {

@@ -24,13 +24,7 @@
   <tbody>
     {% for poll in polls %}
     <tr>
-      <td>
-	{% for person in persons %}
-	{% if poll.person_id == person.id %}
-	{{person.name}}
-	{% endif %}
-	{% endfor %}
-      </td>
+      <td>{{poll.person_name}}</td>
       <td><a href="{{base_path}}/poll/{{poll.id}}">{{poll.name}}</a></td>
       <td>{{poll.startdate}}</td>
       <td>{{poll.enddate}}</td>
@@ -41,13 +35,7 @@
         <label class="label label-danger">ei</label>
         {% endif %}
       </td>
-      <td>
-	{% for poll_type in poll_types %}
-	{% if poll.poll_type_id == poll_type.id %}
-	{{poll_type.name}}
-	{% endif %}
-	{% endfor %}
-      </td>
+      <td>{{poll.poll_type_name}}</td>
       <td>
 	<a class="btn btn-default btn-sm" href="{{base_path}}/poll/{{poll.id}}/edit">XXX TBD</a>
 	<!-- Muokkaa -->
