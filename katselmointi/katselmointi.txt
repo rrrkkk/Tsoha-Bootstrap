@@ -1,0 +1,84 @@
+
+TSOHA Koodikatselmointi, viikko 3
+
+Katselmoija: Riku Kalinen
+
+
+1. Katselmoitava työ
+
+GitHub - linkki: https://github.com/nykanenj/Tsoha-Bootstrap
+
+Linkki sovellukseen, lähde Labtool: http://nykanenj.users.cs.helsinki.fi/Tsoha/test.html
+
+Linkki sovellukseen, lähde GitHub README.md: http://nykanenj.users.cs.helsinki.fi/Tsoha/
+
+Ladattu 31.3.2017 klo 09:55
+
+
+2. Tehdyt toimenpiteet
+
+Seurattu linkkiä labtoolista.
+
+Seurattu linkkiä GitHub README.md:stä.
+
+Luettu dokumentaatio.pdf.
+
+Katsottu tree juurihakemistosta.
+
+Käyty läpi Login - sivu: http://nykanenj.users.cs.helsinki.fi/Tsoha/login
+
+Katsottu config/routes.php.
+
+Katsottu sql/create_tables.sql ja sql/add_test_data.sql.
+
+Käyty läpi Overview - sivu: .../overview
+
+Käyty läpi Add - sivu: .../add
+
+Käyty läpi Edit - sivu: .../edit
+
+Käyty läpi Remove - sivu: .../remove
+
+3. Huomioita
+
+3.1 Hyvää
+
+GitHub README.md linkki toimii.
+
+Koodi on ymmärrettävää.
+
+MVC-mallia on noudatettu.
+
+Visuaalinen ulkoasu on siisti.
+
+Navigaatiopalkki toimii.
+
+Järjestelmän peruskomponentit ovat paikallaan ja asennettuina tuotantopalvelimelle.
+
+Overview-sivu toimii. Linkit toimivat ja näyttävät mitä pitää.
+
+Add-sivu toimii. Data menee kantaan kunnolla.
+
+3.2 Kehitettävää
+
+Labtoolin linkki http://nykanenj.users.cs.helsinki.fi/Tsoha/test.html ei toimi: 404. 
+
+Relaatiotietokantakaaviossa on ristiriitaisuuksia tiedostoon sql/create_tables.sql nähden. Nämä molemmat ovat ristiriidassa "Järjestelmän tietosisältö" - osion kanssa. Tietokannan rakenteen selvittäminen on hankalaa. 
+
+Tietokannassa taulu questiondata sisältää:
+- Tilanneen yrityksen tiedot
+- Kyselyn perustiedot
+- Kysymykset
+- Vastaukset
+Nämä kaikki pitäisi ottaa erilleen, siis tyyliin:
+- Yksi taulu kyselyn perustiedoille.
+- Yksi taulu kyselyyn liittyville kysymyksille (jos kyselyssä voi olla monta kysymystä - jos ei niin sitten tämä on tarpeeton).
+- Yksi taulu mahdollisille vastausvaihtoehdoille (jos nämä ovat kiinnitettyjä - jos vapaamuotoisia niin sitten tämä on tarpeeton).
+- Yksi taulu yritysten tiedoille.
+- Yksi taulu vastauksien tallettamista varten.
+
+Luokka Datacruncher käsittelee taulua questiondata. Mikäli ko taulu jaetaan osiin, suosittelen myös tämän luokan jakamista osiin tyyliin luokka per taulu. Tällöin kannattanee nimetä luokat selkeyden vuoksi taulujen mukaan.
+
+Login - sivu ottaa tietoja vastaan, mutta tällä ei näytä olevan vaikutusta. Kirjautumista ei tosin ole tarvinnutkaan toteuttaa vielä tässä vaiheessa.
+
+Edit- ja Remove - sivut ovat suunnitelman asteella. Niitähän ei tosin tarvittukaan vielä.
