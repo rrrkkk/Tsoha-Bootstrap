@@ -43,6 +43,7 @@ Käyty läpi Query - sivu: .../query
 
 Käyty läpi Remove - sivu: .../remove
 
+Katsottu hakemisto app/ alihakemistoineen ja sieltä relevantit tiedostot.
 
 3. Huomioita
 
