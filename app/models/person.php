@@ -1,7 +1,8 @@
 <?php
 
 class Person extends BaseModel {
-    public $id, $name, $username, $email, $password, $admin;
+    # password == hashed password, password_plain == plaintext
+    public $id, $name, $username, $email, $password, $password_plain, $admin;
 
     public function __construct($attributes){
         parent::__construct($attributes);
@@ -21,6 +22,7 @@ class Person extends BaseModel {
                     'username' => $row['username'],
                     'email' => $row['email'],
                     'password' => $row['password'],
+                    'password_plain' => '',
                     'admin' => $row['admin']));
         }
         
@@ -42,6 +44,7 @@ class Person extends BaseModel {
                     'username' => $row['username'],
                     'email' => $row['email'],
                     'password' => $row['password'],
+                    'password_plain' => '',
                     'admin' => $row['admin']));
             return $person;
         }
@@ -50,15 +53,18 @@ class Person extends BaseModel {
 
     } # find
 
-    public function save(){
-        $query
-            = DB::connection()->prepare('INSERT INTO person (name, username, email, password, admin) VALUES (:name, :username, :email, :password, :admin) RETURNING id');
+    public function save() {
+        $this->password = hash("sha256", $this->password_plain); # XXX this is a bootleg - no salt
+        $sql = 'INSERT INTO person (name, username, email, password, admin)
+                VALUES (:name, :username, :email, :password, :admin)
+                RETURNING id';
+        $query = DB::connection()->prepare($sql);
         $query->bindValue(':name', $this->name, PDO::PARAM_STR);
         $query->bindValue(':username', $this->username, PDO::PARAM_STR);
         $query->bindValue(':email', $this->email, PDO::PARAM_STR);
         $query->bindValue(':password', $this->password, PDO::PARAM_STR);
         $query->bindValue(':admin', $this->admin, PDO::PARAM_BOOL);
-        $query->execute(); 
+        $query->execute();
         $row = $query->fetch();
         $this->id = $row['id'];
     } # save

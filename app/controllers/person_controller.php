@@ -22,7 +22,8 @@ class PersonController extends BaseController {
             'name' => $params['name'],
             'username' => $params['username'],
             'email' => $params['email'],
-            'password' => hash("sha256", $params['password_plain']), # XXX this is a bootleg
+            'password' => '', # gets hashed in the model
+            'password_plain' => $params['password_plain'],
             'admin' => $params['admin']
         ));
         
