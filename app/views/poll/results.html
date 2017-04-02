@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Äänestyksen tulokset</h1>
+<h2>{{poll.name}}</h2>
+
+{% if poll.poll_type_id == 1 %}
+
+<p>Kärkitulokset
+
+<table class="table table-striped table-bordered">
+  
+  <thead>
+    <tr>
+      <th>Vastausvaihtoehto</th>
+      <th>Äänet</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for poll_result in poll_results %}
+    {% if poll_result.is_top == 1 %}
+    <tr>
+      <td>{{poll_result.poll_option_name}}</td>
+      <td>{{poll_result.votes}}</td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+  </tbody>
+
+</table>
+
+{% elseif poll.poll_type_id == 2 %}
+
+<p>Kaikki tulokset
+
+<table class="table table-striped table-bordered">
+  
+  <thead>
+    <tr>
+      <th>Vastausvaihtoehto</th>
+      <th>Äänet</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for poll_result in poll_results %}
+    <tr>
+      <td>{{poll_result.poll_option_name}}</td>
+      <td>{{poll_result.votes}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+
+</table>
+
+{% elseif poll.poll_type_id == 3 %}
+
+<p>Kesken olevasta äänestyksestä ei näytetä tuloksia.</p>
+
+{% else %}
+
+<p>Virhe!</p>
+
+{% endif %}
+
+{% endblock %}

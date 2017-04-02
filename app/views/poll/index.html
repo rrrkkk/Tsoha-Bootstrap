@@ -3,6 +3,7 @@
 
 <h1>Äänestykset</h1>
 
+<!-- XXX needs access control -->
 <p>
   <a href="{{base_path}}/poll/new" class="btn btn-success">Lisää äänestys</a>
 </p>
@@ -37,6 +38,8 @@
       </td>
       <td>{{poll.poll_type_name}}</td>
       <td>
+	<a class="btn btn-default btn-sm" href="{{base_path}}/poll/vote/{{poll.id}}">Äänestä</a>
+	<a class="btn btn-default btn-sm" href="{{base_path}}/poll/results/{{poll.id}}">Tulokset</a>
 	<a class="btn btn-default btn-sm" href="{{base_path}}/poll/{{poll.id}}/edit">XXX TBD</a>
 	<!-- Muokkaa -->
 	<a class="btn btn-default btn-sm" href="{{base_path}}/poll_option/poll/{{poll.id}}">Vaihtoehdot</a>

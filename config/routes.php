@@ -37,8 +37,20 @@ $routes->get('/poll/edit/:id', function($id) {
     PollController::edit($id);
 });
 
+$routes->get('/poll/vote/:id', function($id) {
+    PollController::vote($id);
+});
+
+$routes->get('/poll/results/:id', function($id) {
+    PollController::results($id);
+});
+
 $routes->post('/poll', function(){
     PollController::store();
+});
+
+$routes->post('/vote', function(){
+    VoteController::store();
 });
 
 $routes->get('/poll_option/poll/:poll_id', function($poll_id) {
@@ -65,11 +77,11 @@ $routes->get('/vote', function() {
 $routes->get('/vote/1', function() {
     HelloWorldController::vote_show();
 });
-*/
 
 $routes->get('/vote/edit/1', function() {
     HelloWorldController::vote_edit();
 });
+*/
 
 $routes->get('/login', function() {
     HelloWorldController::login();
