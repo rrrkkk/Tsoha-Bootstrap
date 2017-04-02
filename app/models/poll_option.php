@@ -29,7 +29,7 @@ class PollOption extends BaseModel {
     } # all
 
     public static function find($id) {
-        $query = DB::connection()->prepare("SELECT * FROM poll_options WHERE id = :id LIMIT 1");
+        $query = DB::connection()->prepare("SELECT * FROM poll_option WHERE id = :id LIMIT 1");
         $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->execute();
         $row = $query->fetch();
