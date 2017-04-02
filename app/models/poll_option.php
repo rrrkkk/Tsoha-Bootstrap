@@ -48,10 +48,12 @@ class PollOption extends BaseModel {
 
     } # find
 
-    public function save(){
-        $query
-            = DB::connection()->prepare('INSERT INTO poll_option (poll_id, name, description) VALUES (:poll_id, :name, :description) RETURNING id');
-        $query->bindValue(':poll_id', $this->person_id, PDO::PARAM_INT);
+    public function save() {
+        $sql = 'INSERT INTO poll_option (poll_id, name, description)
+                VALUES (:poll_id, :name, :description)
+                RETURNING id';
+        $query = DB::connection()->prepare($sql);
+        $query->bindValue(':poll_id', $this->poll_id, PDO::PARAM_INT);
         $query->bindValue(':name', $this->name, PDO::PARAM_STR);
         $query->bindValue(':description', $this->description, PDO::PARAM_STR);
         $query->execute();
