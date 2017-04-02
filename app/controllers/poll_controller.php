@@ -37,7 +37,7 @@ class PollController extends BaseController {
                    array('persons' => $persons, 'poll_types' => $poll_types));
     }
 
-    public static function store(){
+    public static function store() {
         $params = $_POST;
         $poll = new Poll(array(
             'person_id' => $params['person_id'],
@@ -45,7 +45,7 @@ class PollController extends BaseController {
             'startdate' => $params['startdate'],
             'enddate' => $params['enddate'],
             'anonymous' => $params['anonymous'],
-            'poll_type' => $params['poll_type_id']
+            'poll_type_id' => $params['poll_type_id']
         ));
         
         $poll->save();
