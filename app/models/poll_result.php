@@ -10,7 +10,7 @@ class PollResult extends BaseModel {
     // it only makes sense to fetch poll results related to a specific poll.
     public static function all($poll_id) {
         $poll_results = array();
-        $most_votes = 0;
+        $top_votes = 0;
 
         # outer loop: run all possible options for this poll.
         $query1 = DB::connection()->prepare("SELECT * FROM poll_option WHERE poll_id = :poll_id");
