@@ -77,6 +77,10 @@ $routes->get('/poll_option/:id', function($id){
     PollOptionController::show($id);
 });
 
+$routes->get('/poll_option/:id/edit', function($id){
+    PollOptionController::edit($id);
+});
+
 $routes->post('/poll_option', function(){
     PollOptionController::store();
 });
