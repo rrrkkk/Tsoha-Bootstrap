@@ -98,11 +98,11 @@ class Poll extends BaseModel {
     }
 
     public function validate_startdate() {
-        return validate_date($this->startdate);
+        return BaseModel::validate_date($this->startdate);
     }
 
     public function validate_enddate() {
-        return validate_date($this->enddate);
+        return BaseModel::validate_date($this->enddate);
     }
 
 }
