@@ -6,6 +6,7 @@ class Person extends BaseModel {
 
     public function __construct($attributes){
         parent::__construct($attributes);
+        $this->validators = array('validate_name', 'validate_username', 'validate_password_plain');
     }
 
     public static function all() {
@@ -68,6 +69,19 @@ class Person extends BaseModel {
         $row = $query->fetch();
         $this->id = $row['id'];
     } # save
+
+    public function validate_name() {
+        return BaseModel::validate_strlen($this->name, 5);
+    }
+
+    public function validate_username() {
+        return BaseModel::validate_strlen($this->username, 2);
+    }
+
+    public function validate_password_plain() {
+        return BaseModel::validate_strlen($this->password_plain, 6, false);
+    }
+
 }
 
 ?>

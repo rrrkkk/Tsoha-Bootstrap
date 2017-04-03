@@ -16,20 +16,27 @@ class PersonController extends BaseController {
         View::make('person/new.html');
     }
 
-    public static function store(){
+    public static function store() {
         $params = $_POST;
-        $person = new Person(array(
+        $attributes = array(
             'name' => $params['name'],
             'username' => $params['username'],
             'email' => $params['email'],
             'password' => '', # gets hashed in the model
             'password_plain' => $params['password_plain'],
             'admin' => $params['admin']
-        ));
+        );
         
-        $person->save();
-        
-        Redirect::to('/person/' . $person->id, array('message' => 'Henkilö on lisätty.'));
+        $person = new Person($attributes);
+        $errors = $person->errors();
+
+        if (count($errors) == 0) {
+            $person->save();
+            Redirect::to('/person/' . $person->id, array('message' => 'Henkilö on lisätty.'));
+        } else {
+            View::make('person/new.html',
+                       array('errors' => $errors, 'attributes' => $attributes));
+        }
     
     } # store
     
