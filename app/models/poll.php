@@ -3,9 +3,11 @@
 class Poll extends BaseModel {
     public $id, $person_id, $name, $startdate, $enddate, $anonymous, $poll_type_id;
     public $person_name, $poll_type_name; // these are derived from elsewhere in the db.
+    public $validators;
 
     public function __construct($attributes){
         parent::__construct($attributes);
+        $this->validators = array('validate_name', 'validate_startdate', 'validate_enddate');
     }
 
     public static function all() {
@@ -31,7 +33,8 @@ class Poll extends BaseModel {
                     'anonymous' => $row['anonymous'],
                     'poll_type_id' => $row['poll_type_id'],
                     'person_name' => $row['person_name'],
-                    'poll_type_name' => $row['poll_type_name']));
+                    'poll_type_name' => $row['poll_type_name']
+                ));
         }
         
         return $polls;
@@ -85,6 +88,23 @@ class Poll extends BaseModel {
         $row = $query->fetch();
         $this->id = $row['id'];
     } # save
+
+    public function validate_name() {
+        $errors = array();
+        if (strlen($this->name) < 1) {
+            $errors[] = "Nimessä on oltava vähintään yksi kirjain";
+        }
+        return $errors;
+    }
+
+    public function validate_startdate() {
+        return validate_date($this->startdate);
+    }
+
+    public function validate_enddate() {
+        return validate_date($this->enddate);
+    }
+
 }
 
 ?>

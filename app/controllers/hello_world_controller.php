@@ -1,7 +1,5 @@
 <?php
 
-# require 'app/models/person.php';
-
 class HelloWorldController extends BaseController{
 
     public static function index(){
@@ -26,9 +24,14 @@ class HelloWorldController extends BaseController{
 
     public static function sandbox(){
         // Testaa koodiasi täällä
-        $riku = Person::find(1);
-        $persons = Person::all();
-        Kint::dump($persons);
-        Kint::dump($riku);
+        $poll = new Poll(array(
+            'person_id' => 1,
+            'name' => 'Nimi',
+            'startdate' => 'Tekstiä',
+            'enddate' => '1.4.2017'
+        ));
+        $errors = $poll->errors();
+        
+        Kint::dump($errors);
     }
 }
