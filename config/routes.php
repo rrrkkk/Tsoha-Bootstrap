@@ -85,6 +85,10 @@ $routes->post('/poll_option', function(){
     PollOptionController::store();
 });
 
+$routes->post('/poll_option/:id/edit', function($id){
+    PollOptionController::update($id);
+});
+
 /*
 $routes->get('/vote', function() {
     HelloWorldController::vote_list();
