@@ -2,10 +2,11 @@
 {% block content %}
   <h1>Henkilön tiedot</h1>
   <!-- Painikkeet tähän -->
-  <p>
-    <button class="btn btn-danger">XXX TBD</button> <!-- Poista -->
-    <a href="#" class="btn btn-default">Muokkaa</a>
-  </p>
+  <form method="post" action="{{base_path}}/person/{{person.id}}/destroy" style="display: inline-block;">
+    <button type="submit" class="btn btn-danger">
+      Poista henkilö ja kaikki häneen liittyvät äänestykset
+    </button>
+  </form>
   <!-- Tiedot tulee listana tähän -->
   <ul>
     <li><strong>Nimi:</strong>{{person.name}}</li>

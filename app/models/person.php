@@ -94,7 +94,25 @@ class Person extends BaseModel {
         }
     } # update
 
+    # destroy person and all related data.
     public function destroy() {
+        $person_id = $this->id;
+        $sql1 = "DELETE FROM poll_option WHERE poll_id IN (SELECT id FROM poll WHERE person_id = :id)";
+        $query1 = DB::connection()->prepare($sql1);
+        $query1->bindValue(':id', $person_id, PDO::PARAM_INT);
+        $query1->execute();
+        $sql2 = "DELETE FROM vote WHERE poll_id IN (SELECT id FROM poll WHERE person_id = :id)";
+        $query2 = DB::connection()->prepare($sql2);
+        $query2->bindValue(':id', $person_id, PDO::PARAM_INT);
+        $query2->execute();
+        $sql3 = "DELETE FROM poll WHERE person_id = :id";
+        $query3 = DB::connection()->prepare($sql3);
+        $query3->bindValue(':id', $person_id, PDO::PARAM_INT);
+        $query3->execute();
+        $sql4 = "DELETE FROM person WHERE id = :id";
+        $query4 = DB::connection()->prepare($sql4);
+        $query4->bindValue(':id', $person_id, PDO::PARAM_INT);
+        $query4->execute();
     }
 
     public function validate_name() {

@@ -73,7 +73,7 @@ class PersonController extends BaseController {
     public static function destroy($id) {
         $person = new Person(array('id' => $id));
         $person->destroy();
-        Redirect::to('/person', array('message' => 'Henkilö on poistettu onnistuneesti!'));
+        Redirect::to('/person', array('message' => 'Henkilö ja kaikki häneen liittyvät tiedot on poistettu onnistuneesti!'));
     }
     
 } # PersonController

@@ -16,8 +16,20 @@ $routes->get('/person/:id', function($id){
     PersonController::show($id);
 });
 
+$routes->get('/person/:id/edit', function($id){
+    PersonController::edit($id);
+});
+
 $routes->post('/person', function(){
     PersonController::store();
+});
+
+$routes->post('/person/:id/edit', function($id){
+    PersonController::update($id);
+});
+
+$routes->post('/person/:id/destroy', function($id){
+    PersonController::destroy($id);
 });
 
 $routes->get('/poll', function() {
@@ -33,7 +45,7 @@ $routes->get('/poll/:id', function($id){
 });
 
 /* XXX does not work, yet */
-$routes->get('/poll/edit/:id', function($id) {
+$routes->get('/poll/:id/edit', function($id) {
     PollController::edit($id);
 });
 
