@@ -55,7 +55,11 @@ class PollController extends BaseController {
             $poll->save();
             Redirect::to('/poll/' . $poll->id, array('message' => 'Äänestys on lisätty.'));
         } else {
-            View::make('poll/new.html', array('errors' => $errors, 'attributes' => $attributes));
+            $persons = Person::all();
+            $poll_types = PollType::all();
+            View::make('poll/new.html',
+                       array('persons' => $persons, 'poll_types' => $poll_types,
+                             'errors' => $errors, 'attributes' => $attributes));
         }
     
     } # store
