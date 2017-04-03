@@ -32,7 +32,7 @@ class BaseModel{
         $errors = array();
 
         $d = date_parse($date);
-        if (! checkdate($d[1], $d[2], $d[0])) {
+        if (! checkdate($d['month'], $d['day'], $d['year'])) {
             $errors[] = "Virheellinen päivämäärä: $date";
         }
 
