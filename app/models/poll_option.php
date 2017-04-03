@@ -5,6 +5,7 @@ class PollOption extends BaseModel {
 
     public function __construct($attributes){
         parent::__construct($attributes);
+        $this->validators = array('validate_name');
     }
 
     // it only makes sense to fetch all poll options related to a specific poll.
@@ -60,6 +61,11 @@ class PollOption extends BaseModel {
         $row = $query->fetch();
         $this->id = $row['id'];
     } # save
+
+     public function validate_name() {
+        return BaseModel::validate_strlen($this->name, 1);
+    }
+
 }
 
 ?>
