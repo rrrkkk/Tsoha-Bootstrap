@@ -15,15 +15,17 @@
       }
     }
 
-    public function errors(){
-      // Lisätään $errors muuttujaan kaikki virheilmoitukset taulukkona
-      $errors = array();
+      public function errors(){
+          // Lisätään $errors muuttujaan kaikki virheilmoitukset taulukkona
+          $errors = array();
 
-      foreach($this->validators as $validator){
-        // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
+          foreach($this->validators as $validator){
+              // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
+              $validator_errors = $validator();
+              $errors = array_merge($errors, $validator_errors);
+          }
+
+          return $errors;
       }
-
-      return $errors;
-    }
 
   }

@@ -70,9 +70,11 @@ class Poll extends BaseModel {
 
     } # find
 
-    public function save(){
-        $query
-            = DB::connection()->prepare('INSERT INTO poll (person_id, name, startdate, enddate, anonymous, poll_type_id) VALUES (:person_id, :name, :startdate, :enddate, :anonymous, :poll_type_id) RETURNING id');
+    public function save() {
+        $sql = 'INSERT INTO poll (person_id, name, startdate, enddate, anonymous, poll_type_id)
+                VALUES (:person_id, :name, :startdate, :enddate, :anonymous, :poll_type_id)
+                RETURNING id';
+        $query = DB::connection()->prepare($sql);
         $query->bindValue(':person_id', $this->person_id, PDO::PARAM_INT);
         $query->bindValue(':name', $this->name, PDO::PARAM_STR);
         $query->bindValue(':startdate', $this->startdate, PDO::PARAM_STR);
