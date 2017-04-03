@@ -30,7 +30,7 @@ class PollOptionController extends BaseController {
         );
 
         $poll_option = new PollOption($attributes);
-        $errors = $poll->errors();
+        $errors = $poll_option->errors();
 
         if (count($errors) == 0) {
             $poll_option->save();
