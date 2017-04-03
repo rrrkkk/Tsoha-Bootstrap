@@ -39,18 +39,24 @@ class PollController extends BaseController {
 
     public static function store() {
         $params = $_POST;
-        $poll = new Poll(array(
+        $attributes = array(
             'person_id' => $params['person_id'],
             'name' => $params['name'],
             'startdate' => $params['startdate'],
             'enddate' => $params['enddate'],
             'anonymous' => $params['anonymous'],
             'poll_type_id' => $params['poll_type_id']
-        ));
+        );
         
-        $poll->save();
-        
-        Redirect::to('/poll/' . $poll->id, array('message' => 'Äänestys on lisätty.'));
+        $poll = new Poll($attributes);
+        $errors = $poll->errors();
+
+        if (count($errors) == 0) {
+            $poll->save();
+            Redirect::to('/poll/' . $poll->id, array('message' => 'Äänestys on lisätty.'));
+        } else {
+            View::make('poll/new.html', array('errors' => $errors, 'attributes' => $attributes));
+        }
     
     } # store
     
