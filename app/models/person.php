@@ -70,6 +70,33 @@ class Person extends BaseModel {
         $this->id = $row['id'];
     } # save
 
+    public function update() {
+        $sql1 = 'UPDATE person
+                SET name = :name,
+                    username = :username,
+                    email = :email,
+                    admin = :admin
+                WHERE id = :id';
+        $query1 = DB::connection()->prepare($sql1);
+        $query1->bindValue(':name', $this->name, PDO::PARAM_STR);
+        $query1->bindValue(':username', $this->username, PDO::PARAM_STR);
+        $query1->bindValue(':email', $this->email, PDO::PARAM_STR);
+        $query1->bindValue(':admin', $this->admin, PDO::PARAM_BOOL);
+        $query1->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $query1->execute();
+        if (strlen ($this->password) > 0) {
+            $this->password = hash("sha256", $this->password_plain); # XXX this is a bootleg - no salt
+            $sql2 = 'UPDATE person SET password = :password WHERE id = :id';
+            $query2 = DB::connection()->prepare($sql2);
+            $query2->bindValue(':password', $this->password, PDO::PARAM_STR);
+            $query2->bindValue(':id', $this->id, PDO::PARAM_INT);
+            $query2->execute();
+        }
+    } # update
+
+    public function destroy() {
+    }
+
     public function validate_name() {
         return BaseModel::validate_strlen($this->name, 5);
     }

@@ -12,6 +12,11 @@ class PersonController extends BaseController {
         View::make('person/show.html', array('person' => $person));
     }
 
+    public static function edit($id) {
+        $person = Person::find($id);
+        View::make('person/edit.html', array('attributes' => $person));
+    }
+
     public static function create() {
         View::make('person/new.html');
     }
@@ -39,6 +44,37 @@ class PersonController extends BaseController {
         }
     
     } # store
+    
+    public static function update() {
+        $params = $_POST;
+        $attributes = array(
+            'name' => $params['name'],
+            'username' => $params['username'],
+            'email' => $params['email'],
+            'password' => '', # gets hashed in the model
+            'password_plain' => $params['password_plain'],
+            'admin' => $params['admin']
+        );
+        
+        $person = new Person($attributes);
+        $errors = $person->errors();
+
+        if (count($errors) == 0) {
+            $person->update();
+            Redirect::to('/person/' . $person->id,
+                         array('message' => 'Henkilön tietoja on päivitetty.'));
+        } else {
+            View::make('person/edit.html',
+                       array('errors' => $errors, 'attributes' => $attributes));
+        }
+    
+    } # update
+
+    public static function destroy($id) {
+        $person = new Person(array('id' => $id));
+        $person->destroy();
+        Redirect::to('/person', array('message' => 'Henkilö on poistettu onnistuneesti!'));
+    }
     
 } # PersonController
 
