@@ -94,7 +94,7 @@ class Person extends BaseModel {
         }
     } # update
 
-    # destroy person and all related data.
+    # destroy person and all related data. order is important.
     public function destroy() {
         $person_id = $this->id;
         $sql2 = "DELETE FROM vote WHERE poll_id IN (SELECT id FROM poll WHERE person_id = :id)";

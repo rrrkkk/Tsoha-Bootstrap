@@ -62,6 +62,33 @@ class PollOption extends BaseModel {
         $this->id = $row['id'];
     } # save
 
+    public function update() {
+        $sql = 'UPDATE poll_option
+                SET poll_id = :poll_id,
+                    name = :name,
+                    description = :description
+                WHERE id = :id';
+        $query = DB::connection()->prepare($sql);
+        $query->bindValue(':poll_id', $this->poll_id, PDO::PARAM_INT);
+        $query->bindValue(':name', $this->name, PDO::PARAM_STR);
+        $query->bindValue(':description', $this->description, PDO::PARAM_STR);
+        $query->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $query->execute();
+    } # save
+
+    # destroy poll option and all related data. order is important.
+    public function destroy() {
+        $poll_option_id = $this->id;
+        $sql1 = "DELETE FROM vote WHERE poll_option_id = :id";
+        $query1 = DB::connection()->prepare($sql1);
+        $query1->bindValue(':id', $poll_option_id, PDO::PARAM_INT);
+        $query1->execute();
+        $sql2 = "DELETE FROM poll_option WHERE id = :id";
+        $query2 = DB::connection()->prepare($sql2);
+        $query2->bindValue(':id', $poll_option_id, PDO::PARAM_INT);
+        $query2->execute();
+    }
+
      public function validate_name() {
         return BaseModel::validate_strlen($this->name, 1);
     }

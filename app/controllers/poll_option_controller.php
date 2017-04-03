@@ -16,12 +16,19 @@ class PollOptionController extends BaseController {
                    array('poll_option' => $poll_option, 'poll' => $poll));
     }
 
+    public static function edit($id) {
+        $poll_option = PollOption::find($id);
+        $poll = Poll::find($poll_option->poll_id);
+        View::make('poll_option/edit.html',
+                   array('attributes' => $poll_option, 'poll' => $poll));
+    }
+
     public static function create($poll_id) {
         $poll = Poll::find($poll_id);
         View::make('poll_option/new.html', array('poll' => $poll));
     }
 
-    public static function store(){
+    public static function store() {
         $params = $_POST;
         $attributes = array(
             'poll_id' => $params['poll_id'],
@@ -45,6 +52,36 @@ class PollOptionController extends BaseController {
     
     } # store
     
-} # PollController
+    public static function update() {
+        $params = $_POST;
+        $attributes = array(
+            'poll_id' => $params['poll_id'],
+            'name' => $params['name'],
+            'description' => $params['description']
+        );
+
+        $poll_option = new PollOption($attributes);
+        $errors = $poll_option->errors();
+
+        if (count($errors) == 0) {
+            $poll_option->update();
+            Redirect::to('/poll_option/' . $poll_option->id,
+                         array('message' => 'Äänestysvaihtoehtoa on päivitetty.'));
+        } else {
+            $poll = Poll::find($poll_option->poll_id);
+            View::make('poll_option/edit.html',
+                       array('poll' => $poll,
+                             'errors' => $errors, 'attributes' => $attributes));
+        }
+    
+    } # update
+    
+    public static function destroy($id) {
+        $poll_option = new PollOption(array('id' => $id));
+        $poll_option->destroy();
+        Redirect::to('/poll', array('message' => 'Äänestysvaihtoehto ja kaikki siihen liittyvät tiedot poistettu onnistuneesti!'));
+    }
+    
+} # PollOptionController
 
 ?>

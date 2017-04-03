@@ -20,7 +20,11 @@
   <tbody>
     {% for poll_option in poll_options %}
     <tr>
-      <td>{{poll_option.name}}</td>
+      <td>
+	<a href="{{base_path}}/poll_option/{{poll_option.id}}">
+	  {{poll_option.name}}
+	</a>
+      </td>
       <td>{{poll_option.description}}</td>
       <td>
 	<a class="btn btn-default btn-sm"

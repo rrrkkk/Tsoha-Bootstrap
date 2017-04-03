@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
   <h1>Äänestysvaihtoehdon tiedot</h1>
-  <p>
-    <button class="btn btn-danger">Poista</button> <a href="#" class="btn btn-default">Muokkaa</a>
-  </p>
+  <form method="post" action="{{base_path}}/poll_option/{{person.id}}/destroy" style="display: inline-block;">
+    <button type="submit" class="btn btn-danger">
+      Poista tämä äänestysvaihtoehto ja kaikki siihen liittyvät tiedot
+    </button>
+  </form>
   <ul>
     <li><strong>Äänestys:</strong>{{poll.poll_name}}</li>
     <li><strong>Nimi:</strong>{{poll_option.name}}</li>
