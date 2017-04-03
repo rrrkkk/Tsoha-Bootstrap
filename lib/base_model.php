@@ -39,4 +39,15 @@ class BaseModel{
         return $errors;
     }
 
+    public function validate_strlen($str, $min_len) {
+        $errors = array();
+
+        $len = strlen($str);
+        if ($len < $min_len) {
+            $errors[] = "Liian lyhyt arvo ($len < $min_len): $str";
+        }
+
+        return $errors;
+    }
+
 }

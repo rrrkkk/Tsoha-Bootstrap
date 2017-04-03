@@ -90,11 +90,7 @@ class Poll extends BaseModel {
     } # save
 
     public function validate_name() {
-        $errors = array();
-        if (strlen($this->name) < 1) {
-            $errors[] = "Nimessä on oltava vähintään yksi kirjain";
-        }
-        return $errors;
+        return BaseModel::validate_strlen($this->name, 5);
     }
 
     public function validate_startdate() {
