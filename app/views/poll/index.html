@@ -38,11 +38,15 @@
       </td>
       <td>{{poll.poll_type_name}}</td>
       <td>
+        {% if poll.can_vote %}
 	<a class="btn btn-default btn-sm" href="{{base_path}}/poll/vote/{{poll.id}}">Äänestä</a>
+        {% endif %}
 	<a class="btn btn-default btn-sm" href="{{base_path}}/poll/results/{{poll.id}}">Tulokset</a>
+        {% if poll.can_edit %}
 	<a class="btn btn-default btn-sm" href="{{base_path}}/poll/{{poll.id}}/edit">XXX TBD</a>
 	<!-- Muokkaa -->
 	<a class="btn btn-default btn-sm" href="{{base_path}}/poll_option/poll/{{poll.id}}">Vaihtoehdot</a>
+        {% endif %}
       </td>
     </tr>
     {% endfor %}

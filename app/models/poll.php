@@ -9,8 +9,21 @@ class Poll extends BaseModel {
     public function __construct($attributes){
         parent::__construct($attributes);
         $this->validators = array('validate_name', 'validate_startdate', 'validate_enddate');
-        # XXX can vote: depends on enddate, user logged in & anonymous
-        # XXX can edit: only owner can edit
+        if ($this->id > 0) {
+            # if a known poll, fill in some extra fields
+            $now_date = date('Y-m-d');
+            # XXX can vote: depends on enddate, user logged in & anonymous
+            $this->can_vote = true;
+            if ($this->startdate > $nowdate) { $this->can_vote = false; }
+            if ($this->enddate < $nowdate) { $this->can_vote = false; }
+            if ((! $this->anonymous) && (! user_is_logged_in())) { $this->can_vote = false; }
+            if (Vote::user_is_voted($this->id)) { $this->can_vote = false; }
+            # XXX can edit: only owner or admin can edit
+            $this->can_edit = false;
+            $current_user = Person::current_user();
+            if ($this->person_id == $current_user->id) { $this->can_edit = true; }
+            if (Person::user_is_admin()) { $this->can_edit = true; }
+        }
     }
 
     public static function all() {

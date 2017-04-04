@@ -161,30 +161,32 @@ class Person extends BaseModel {
         
     } # authenticate
 
-    public function user_is_admin() {
+    public function current_user() {
         if(isset($_SESSION['person'])) {
             $person_id = $_SESSION['person'];
             $person = Person::find($person_id);
-            if ($person == null) {
-                return false;
-            }
-            if ($person->admin) {
-                return true;
-            }
+            return $person;
+        }
+        return null;
+    }
+
+    public function user_is_admin() {
+        $person = Person::current_user();
+        if ($person == null) {
+            return false;
+        }
+        if ($person->admin) {
+            return true;
         }
         return false;
     }
 
     public function user_is_logged_in() {
-        if(isset($_SESSION['person'])) {
-            $person_id = $_SESSION['person'];
-            $person = Person::find($person_id);
-            if ($person == null) {
-                return false;
-            }
-            return true;
+        $person = Person::current_user();
+        if ($person == null) {
+            return false;
         }
-        return false;
+        return true;
     }
 
     public function validate_name() {
