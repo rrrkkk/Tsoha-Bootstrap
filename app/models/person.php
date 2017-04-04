@@ -175,6 +175,18 @@ class Person extends BaseModel {
         return false;
     }
 
+    public function user_is_logged_in() {
+        if(isset($_SESSION['person'])) {
+            $person_id = $_SESSION['person'];
+            $person = Person::find($person_id);
+            if ($person == null) {
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
     public function validate_name() {
         return BaseModel::validate_strlen($this->name, 5);
     }

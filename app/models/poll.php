@@ -2,12 +2,15 @@
 
 class Poll extends BaseModel {
     public $id, $person_id, $name, $startdate, $enddate, $anonymous, $poll_type_id;
-    public $person_name, $poll_type_name; // these are derived from elsewhere in the db.
+    public $person_name, $poll_type_name; # these are derived from elsewhere in the db.
+    public $can_vote, $can_edit; # these are based on date and users' permissions
     public $validators;
 
     public function __construct($attributes){
         parent::__construct($attributes);
         $this->validators = array('validate_name', 'validate_startdate', 'validate_enddate');
+        # XXX can vote: depends on enddate, user logged in & anonymous
+        # XXX can edit: only owner can edit
     }
 
     public static function all() {
