@@ -23,12 +23,14 @@ class Vote extends BaseModel {
         $poll = Poll::find($this->poll_id);
         if (! $poll->anonymous) {
             $current_user = Person::current_user();
-            $sql2 = 'INSERT INTO voters (poll_id, person_id, time)
-                     VALUES (:poll_id, :person_id, NOW())';
-            $query2 = DB::connection()->prepare($sql2);
-            $query2->bindValue(':poll_id', $this->poll_id, PDO::PARAM_INT);
-            $query2->bindValue(':person_id', $current_user->id, PDO::PARAM_INT);
-            $query2->execute();
+            if ($current_user) {
+                $sql2 = 'INSERT INTO voters (poll_id, person_id, time)
+                         VALUES (:poll_id, :person_id, NOW())';
+                $query2 = DB::connection()->prepare($sql2);
+                $query2->bindValue(':poll_id', $this->poll_id, PDO::PARAM_INT);
+                $query2->bindValue(':person_id', $current_user->id, PDO::PARAM_INT);
+                $query2->execute();
+            }
         }
     } # save
 

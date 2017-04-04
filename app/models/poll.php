@@ -21,8 +21,10 @@ class Poll extends BaseModel {
             # XXX can edit: only owner or admin can edit
             $this->can_edit = false;
             $current_user = Person::current_user();
-            if ($this->person_id == $current_user->id) { $this->can_edit = true; }
-            if (Person::user_is_admin()) { $this->can_edit = true; }
+            if ($current_user) {
+                if ($this->person_id == $current_user->id) { $this->can_edit = true; }
+                if (Person::user_is_admin()) { $this->can_edit = true; }
+            }
         }
     }
 
