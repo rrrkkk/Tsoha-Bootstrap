@@ -26,6 +26,10 @@ $routes->get('/login', function() {
     PersonController::login();
 });
 
+$routes->get('/logout', function() {
+    PersonController::logout();
+});
+
 $routes->post('/person', function(){
     PersonController::store();
 });
@@ -40,6 +44,10 @@ $routes->post('/person/:id/destroy', function($id){
 
 $routes->post('/login', function() {
     PersonController::handle_login();
+});
+
+$routes->post('/logout', function() {
+    PersonController::handle_logout();
 });
 
 # poll

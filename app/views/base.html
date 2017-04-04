@@ -45,13 +45,15 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
 	    <li>
-	    <a href="{{base_path}}/login">
 	    {% if user_logged_in %}
+	    <a href="{{base_path}}/logout">
 	    Kirjautuneena tunnuksella {{user_logged_in.username}}
-	    {% else %}
-	    Kirjaudu sisään 
-	    {% endif %}
 	    </a>
+	    {% else %}
+	    <a href="{{base_path}}/login">
+	    Kirjaudu sisään 
+	    </a>
+	    {% endif %}
 	    </li>
           </ul>
         </div>

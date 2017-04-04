@@ -96,6 +96,15 @@ class PersonController extends BaseController {
         }
     }
     
+    public static function logout() {
+        View::make('person/logout.html');
+    }
+
+    public static function handle_logout() {
+        unset $_SESSION['person'];
+        Redirect::to('/', array('message' => 'Sinut on kirjattu ulos.'));
+    }
+    
 } # PersonController
 
 ?>
