@@ -46,9 +46,10 @@
           <ul class="nav navbar-nav navbar-right">
 	    <li>
 	    <a href="{{base_path}}/login">
-	    Kirjaudu sisään
 	    {% if user_logged_in %}
-	    ({{user_logged_in.username}})
+	    Kirjautuneena tunnuksella {{user_logged_in.username}}
+	    {% else %}
+	    Kirjaudu sisään 
 	    {% endif %}
 	    </a>
 	    </li>
