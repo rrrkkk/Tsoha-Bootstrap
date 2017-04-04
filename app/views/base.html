@@ -44,7 +44,14 @@
             <li><a href="{{base_path}}/person">Henkilöt</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="{{base_path}}/login">Kirjaudu sisään</a></li>
+	    <li>
+	    <a href="{{base_path}}/login">
+	    Kirjaudu sisään
+	    {% if user_logged_in %}
+	    ({{user_logged_in.username}})
+	    {% endif %}
+	    </a>
+	    </li>
           </ul>
         </div>
       </div>
