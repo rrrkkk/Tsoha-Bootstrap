@@ -10,6 +10,10 @@ class Person extends BaseModel {
     }
 
     public static function all() {
+        # return nothing if user not admin
+        if (! Person::user_is_admin()) {
+            return null;
+        }
         $query = DB::connection()->prepare("SELECT * FROM person");
         $query->execute();
         $rows = $query->fetchAll();
@@ -32,6 +36,10 @@ class Person extends BaseModel {
     } # all
 
     public static function find($id) {
+        # return nothing if user not admin
+        if (! Person::user_is_admin()) {
+            return null;
+        }
         $query = DB::connection()->prepare("SELECT * FROM person WHERE id = :id LIMIT 1");
         $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->execute();
@@ -55,6 +63,10 @@ class Person extends BaseModel {
     } # find
 
     public static function find_username($username) {
+        # return nothing if user not admin
+        if (! Person::user_is_admin()) {
+            return null;
+        }
         $query = DB::connection()->prepare("SELECT * FROM person WHERE username = :username LIMIT 1");
         $query->bindValue(':username', $username, PDO::PARAM_STR);
         $query->execute();
@@ -156,6 +168,20 @@ class Person extends BaseModel {
         return $person;
         
     } # authenticate
+
+    public function user_is_admin() {
+        if(isset($_SESSION['person'])) {
+            $person_id = $_SESSION['person'];
+            $person = Person::find($person_id);
+            if ($person == null) {
+                return false;
+            }
+            if ($person->admin) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public function validate_name() {
         return BaseModel::validate_strlen($this->name, 5);
