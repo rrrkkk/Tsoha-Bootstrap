@@ -48,7 +48,7 @@ class PersonController extends BaseController {
     public static function update($id) {
         $params = $_POST;
         $attributes = array(
-            'id' => $id;
+            'id' => $id,
             'name' => $params['name'],
             'username' => $params['username'],
             'email' => $params['email'],
