@@ -11,7 +11,7 @@ class Poll extends BaseModel {
         $this->validators = array('validate_name', 'validate_startdate', 'validate_enddate');
         if ($this->id > 0) {
             # if a known poll, fill in some extra fields
-            $now_date = date('Y-m-d');
+            $nowdate = date('Y-m-d');
             # XXX can vote: depends on enddate, user logged in & anonymous
             $this->can_vote = true;
             if ($this->startdate > $nowdate) { $this->can_vote = false; }
