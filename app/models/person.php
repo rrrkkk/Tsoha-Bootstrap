@@ -139,7 +139,7 @@ class Person extends BaseModel {
     }
 
     public function authenticate($username, $password_plain) {
-        $person = find_username($username);
+        $person = Person::find_username($username);
 
         if ($person == null) {
             # käyttäjätunnusta ei löydy, ei jatkoon
