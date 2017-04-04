@@ -52,9 +52,10 @@ class PollOptionController extends BaseController {
     
     } # store
     
-    public static function update() {
+    public static function update($id) {
         $params = $_POST;
         $attributes = array(
+            'id' => $id;
             'poll_id' => $params['poll_id'],
             'name' => $params['name'],
             'description' => $params['description']
