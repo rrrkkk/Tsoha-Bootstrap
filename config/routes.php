@@ -4,6 +4,8 @@ $routes->get('/', function() {
     MainController::index();
 });
 
+# person
+
 $routes->get('/person', function() {
     PersonController::index();
 });
@@ -20,6 +22,10 @@ $routes->get('/person/:id/edit', function($id){
     PersonController::edit($id);
 });
 
+$routes->get('/login', function() {
+    PersonController::login();
+});
+
 $routes->post('/person', function(){
     PersonController::store();
 });
@@ -31,6 +37,12 @@ $routes->post('/person/:id/edit', function($id){
 $routes->post('/person/:id/destroy', function($id){
     PersonController::destroy($id);
 });
+
+$routes->post('/login', function() {
+    PersonController::handle_login();
+});
+
+# poll
 
 $routes->get('/poll', function() {
     PollController::index();
@@ -101,11 +113,11 @@ $routes->get('/vote/1', function() {
 $routes->get('/vote/edit/1', function() {
     HelloWorldController::vote_edit();
 });
-*/
 
 $routes->get('/login', function() {
     HelloWorldController::login();
 });
+*/
 
 $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();

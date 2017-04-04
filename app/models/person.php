@@ -54,6 +54,29 @@ class Person extends BaseModel {
 
     } # find
 
+    public static function find_username($username) {
+        $query = DB::connection()->prepare("SELECT * FROM person WHERE username = :username LIMIT 1");
+        $query->bindValue(':username', $username, PDO::PARAM_STR);
+        $query->execute();
+        $row = $query->fetch();
+
+        if ($row) {
+            $person
+                = new Person(array(
+                    'id' => $row['id'],
+                    'name' => $row['name'],
+                    'username' => $row['username'],
+                    'email' => $row['email'],
+                    'password' => $row['password'],
+                    'password_plain' => '',
+                    'admin' => $row['admin']));
+            return $person;
+        }
+
+        return null;
+
+    } # find_username
+
     public function save() {
         $this->password = hash("sha256", $this->password_plain); # XXX this is a bootleg - no salt
         $sql = 'INSERT INTO person (name, username, email, password, admin)
@@ -114,6 +137,25 @@ class Person extends BaseModel {
         $query4->bindValue(':id', $person_id, PDO::PARAM_INT);
         $query4->execute();
     }
+
+    public function authenticate($username, $password_plain) {
+        $person = find_username($username);
+
+        if ($person == null) {
+            # käyttäjätunnusta ei löydy, ei jatkoon
+            return null;
+        }
+
+        $password_hashed = hash("sha256", $password_plain);
+        if ($password_hashed != $person->password) {
+            # väärä salasana, ei jatkoon
+            return null;
+        }
+
+        # kelpaa.
+        return $person;
+        
+    } # authenticate
 
     public function validate_name() {
         return BaseModel::validate_strlen($this->name, 5);

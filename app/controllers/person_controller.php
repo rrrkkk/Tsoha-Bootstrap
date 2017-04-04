@@ -76,6 +76,25 @@ class PersonController extends BaseController {
         $person->destroy();
         Redirect::to('/person', array('message' => 'Henkilö ja kaikki häneen liittyvät tiedot on poistettu onnistuneesti!'));
     }
+
+    public static function login() {
+        View::make('person/login.html');
+    }
+
+    public static function handle_login() {
+        $params = $_POST;
+
+        $person = Person::authenticate($params['username'], $params['password_plain']);
+
+        if(!$person){
+            View::make('person/login.html',
+                       array('error' => 'Väärä käyttäjätunnus tai salasana!',
+                             'username' => $params['username']));
+        } else {
+            $_SESSION['person'] = $person->id;
+            Redirect::to('/', array('message' => 'Tervetuloa takaisin ' . $person->name . '!'));
+        }
+    }
     
 } # PersonController
 
