@@ -16,7 +16,7 @@ class Poll extends BaseModel {
             $this->can_vote = true;
             if ($this->startdate > $nowdate) { $this->can_vote = false; }
             if ($this->enddate < $nowdate) { $this->can_vote = false; }
-            if ((! $this->anonymous) && (! user_is_logged_in())) { $this->can_vote = false; }
+            if ((! $this->anonymous) && (! Person::user_is_logged_in())) { $this->can_vote = false; }
             if (Vote::user_is_voted($this->id)) { $this->can_vote = false; }
             # XXX can edit: only owner or admin can edit
             $this->can_edit = false;
