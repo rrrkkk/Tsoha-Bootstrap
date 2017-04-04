@@ -40,19 +40,21 @@ class Vote extends BaseModel {
             return true;
         }
         
-        # second, voters (ask anyway, regardless of type of poll)
+        # second, voters (if there is current user, ask anyway, regardless of type of poll)
         $current_user = Person::current_user();
-        $sql = "SELECT COUNT(*) AS votes
-                FROM voters
-                WHERE poll_id = :poll_id AND person_id = :person_id";
-        $query = DB::connection()->prepare($sql);
-        $query->bindValue(':poll_id', $poll_id, PDO::PARAM_INT);
-        $query->bindValue(':person_id', $current_user->id, PDO::PARAM_INT);
-        $query->execute();
-        $row = $query->fetch();
-        if ($row) {
-            if ($row['votes'] > 0) {
-                return true;
+        if ($current_user) {
+            $sql = "SELECT COUNT(*) AS votes
+                    FROM voters
+                    WHERE poll_id = :poll_id AND person_id = :person_id";
+            $query = DB::connection()->prepare($sql);
+            $query->bindValue(':poll_id', $poll_id, PDO::PARAM_INT);
+            $query->bindValue(':person_id', $current_user->id, PDO::PARAM_INT);
+            $query->execute();
+            $row = $query->fetch();
+            if ($row) {
+                if ($row['votes'] > 0) {
+                    return true;
+                }
             }
         }
 
