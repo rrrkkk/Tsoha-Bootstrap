@@ -18,6 +18,8 @@ class PollController extends BaseController {
 
     public static function edit($id) {
         $poll = Poll::find($id);
+        $persons = Person::all();
+        $poll_types = PollType::all();
         View::make('poll/edit.html',
                    array('attributes' => $poll));
     }
