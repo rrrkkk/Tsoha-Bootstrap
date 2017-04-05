@@ -3,9 +3,11 @@
 
 <h1>Henkilöt</h1>
 
+{% if user_logged_in.admin > 0 %}
 <p>
   <a href="{{base_path}}/person/new" class="btn btn-success">Lisää henkilö</a>
 </p>
+{% endif %}
 
 <table class="table table-striped table-bordered">
   
