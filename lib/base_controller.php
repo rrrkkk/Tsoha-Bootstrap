@@ -3,14 +3,7 @@
 class BaseController{
 
     public static function get_user_logged_in() {
-        if(isset($_SESSION['person'])) {
-            $person_id = $_SESSION['person'];
-            $person = Person::find($person_id);
-
-            return $person;
-        }
-        
-        return null;
+        return Person::current_user();
     }
 
     # if current user is not admin, barf
