@@ -40,8 +40,12 @@
           <ul class="nav navbar-nav">
             <!-- Navigaation linkit -->
             <li><a href="{{base_path}}/poll">Äänestykset</a></li>
+	    {% if user_logged_in %}
             <li><a href="{{base_path}}/poll/new">Luo äänestys</a></li>
-            <li><a href="{{base_path}}/person">Henkilöt</a></li>
+	    {% endif %}
+	    {% if user_logged_in.admin > 0 %}
+	    <li><a href="{{base_path}}/person">Henkilöt</a></li>
+	    {% endif %}
           </ul>
           <ul class="nav navbar-nav navbar-right">
 	    <li>
