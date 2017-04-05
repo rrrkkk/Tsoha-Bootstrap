@@ -9,20 +9,24 @@ class PersonController extends BaseController {
     }
 
     public static function show($id) {
+        BaseController::check_admin();
         $person = Person::find($id);
         View::make('person/show.html', array('person' => $person));
     }
 
     public static function edit($id) {
+        BaseController::check_admin();
         $person = Person::find($id);
         View::make('person/edit.html', array('attributes' => $person));
     }
 
     public static function create() {
+        BaseController::check_admin();
         View::make('person/new.html');
     }
 
     public static function store() {
+        BaseController::check_admin();
         $params = $_POST;
         $attributes = array(
             'name' => $params['name'],
@@ -47,6 +51,7 @@ class PersonController extends BaseController {
     } # store
     
     public static function update($id) {
+        BaseController::check_admin();
         $params = $_POST;
         $attributes = array(
             'id' => $id,
@@ -73,6 +78,7 @@ class PersonController extends BaseController {
     } # update
 
     public static function destroy($id) {
+        BaseController::check_admin();
         $person = new Person(array('id' => $id));
         $person->destroy();
         Redirect::to('/person', array('message' => 'Henkilö ja kaikki häneen liittyvät tiedot on poistettu onnistuneesti!'));
