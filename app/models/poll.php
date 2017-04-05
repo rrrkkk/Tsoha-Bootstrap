@@ -12,13 +12,13 @@ class Poll extends BaseModel {
         if ($this->id > 0) {
             # if a known poll, fill in some extra fields
             $nowdate = date('Y-m-d');
-            # XXX can vote: depends on enddate, user logged in & anonymous
+            # can vote: depends on enddate, user logged in & anonymous
             $this->can_vote = true;
             if ($this->startdate > $nowdate) { $this->can_vote = false; }
             if ($this->enddate < $nowdate) { $this->can_vote = false; }
             if ((! $this->anonymous) && (! Person::user_is_logged_in())) { $this->can_vote = false; }
             if (Vote::user_is_voted($this->id)) { $this->can_vote = false; }
-            # XXX can edit: only owner or admin can edit
+            # can edit: only owner or admin can edit
             $this->can_edit = false;
             $current_user = Person::current_user();
             if ($current_user) {
@@ -113,6 +113,43 @@ class Poll extends BaseModel {
         $row = $query->fetch();
         $this->id = $row['id'];
     } # save
+
+    public function update() {
+        $sql = 'UPDATE poll
+                SET person_id = :person_id,
+                    name = :name,
+                    startdate = :startdate,
+                    enddate = :enddate,
+                    anonymous = :anonymous,
+                    poll_type_id = :poll_type_id
+                WHERE id = :id';
+        $query = DB::connection()->prepare($sql);
+        $query->bindValue(':person_id', $this->person_id, PDO::PARAM_INT);
+        $query->bindValue(':name', $this->name, PDO::PARAM_STR);
+        $query->bindValue(':startdate', $this->startdate, PDO::PARAM_STR);
+        $query->bindValue(':enddate', $this->enddate, PDO::PARAM_STR);
+        $query->bindValue(':anonymous', $this->anonymous, PDO::PARAM_BOOL);
+        $query->bindValue(':poll_type_id', $this->poll_type_id, PDO::PARAM_INT);
+        $query->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $query->execute();
+    } # update
+
+    # destroy poll and all related data. order is important.
+    public function destroy() {
+        $poll_id = $this->id;
+        $sql2 = "DELETE FROM vote WHERE poll_id  = :id";
+        $query2 = DB::connection()->prepare($sql2);
+        $query2->bindValue(':id', $poll_id, PDO::PARAM_INT);
+        $query2->execute();
+        $sql1 = "DELETE FROM poll_option WHERE poll_id = :id";
+        $query1 = DB::connection()->prepare($sql1);
+        $query1->bindValue(':id', $poll_id, PDO::PARAM_INT);
+        $query1->execute();
+        $sql3 = "DELETE FROM poll WHERE id = :id";
+        $query3 = DB::connection()->prepare($sql3);
+        $query3->bindValue(':id', $poll_id, PDO::PARAM_INT);
+        $query3->execute();
+    }
 
     public function validate_name() {
         return BaseModel::validate_strlen($this->name, 5);

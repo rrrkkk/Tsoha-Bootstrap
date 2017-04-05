@@ -99,11 +99,11 @@ class Person extends BaseModel {
 
     public function update() {
         $sql1 = 'UPDATE person
-                SET name = :name,
-                    username = :username,
-                    email = :email,
-                    admin = :admin
-                WHERE id = :id';
+                 SET name = :name,
+                     username = :username,
+                     email = :email,
+                     admin = :admin
+                 WHERE id = :id';
         $query1 = DB::connection()->prepare($sql1);
         $query1->bindValue(':name', $this->name, PDO::PARAM_STR);
         $query1->bindValue(':username', $this->username, PDO::PARAM_STR);

@@ -1,25 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Äänestyksen tiedot</h1>
-  <p>
-    <button class="btn btn-danger">XXX TBD</button> <!-- Poista -->
-    <a href="{{base_path}}/poll/{{poll.id}}/edit" class="btn btn-default">XXX TBD</a>
-    <!-- Muokkaa -->
-    <a href="{{base_path}}/poll_option/poll/{{poll.id}}" class="btn btn-default">Vaihtoehdot</a>
-  </p>
-  <ul>
-    <li><strong>Vastuuhenkilö:</strong>{{poll.person_name}}</li>
-    <li><strong>Nimi:</strong>{{poll.name}}</li>
-    <li><strong>Alkupäivä:</strong>{{poll.startdate}}</li>
-    <li><strong>Loppupäivä:</strong>{{poll.enddate}}</li>
-    <li>
-      <strong>Anonyymi?</strong>
-      {% if poll.anonymous %}
-      <label class="label label-success">kyllä</label>
-      {% else %}
-      <label class="label label-danger">ei</label>
-      {% endif %}
-    </li>
-    <li><strong>Tyyppi:</strong>{{poll.poll_type_name}}</li>
-  </ul>
+<h1>Äänestyksen tiedot</h1>
+<form method="post" action="{{base_path}}/poll/{{poll.id}}/destroy" style="display: inline-block;">
+  <button type="submit" class="btn btn-danger">
+    Poista äänestys ja kaikki siihen liittyvät tiedot
+  </button>
+  <a href="{{base_path}}/poll/{{poll.id}}/edit" class="btn btn-default">Muokkaa</a>
+  <a href="{{base_path}}/poll_option/poll/{{poll.id}}" class="btn btn-default">Vaihtoehdot</a>
+</form>
+<ul>
+  <li><strong>Vastuuhenkilö:</strong>{{poll.person_name}}</li>
+  <li><strong>Nimi:</strong>{{poll.name}}</li>
+  <li><strong>Alkupäivä:</strong>{{poll.startdate}}</li>
+  <li><strong>Loppupäivä:</strong>{{poll.enddate}}</li>
+  <li>
+    <strong>Anonyymi?</strong>
+    {% if poll.anonymous %}
+    <label class="label label-success">kyllä</label>
+    {% else %}
+    <label class="label label-danger">ei</label>
+    {% endif %}
+  </li>
+  <li><strong>Tyyppi:</strong>{{poll.poll_type_name}}</li>
+</ul>
 {% endblock %}

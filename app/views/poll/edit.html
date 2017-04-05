@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Muokkaa äänestystä</h1>
+
+{% if errors %}
+<div class="alert alert-danger">
+  <ul>
+    {% for error in errors %}
+    <li>{{error}}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+<form method="post" action="{{base_path}}/poll{{attributes.id}}/edit">
+
+  <div class="form-group">
+    <label>Vastuuhenkilö</label>
+    <select name="person_id">
+      {% for person in persons %}
+      <option value="{{person.id}}"
+	      {% if attributes.person_id == person.id %}
+	      selected
+	      {% endif %}
+	      >{{person.name}}
+      {% endfor %}
+    </select>
+  </div>
+  
+  <div class="form-group">
+    <label>Nimi</label>
+    <input name="name" class="form-control"
+	   value="{{attributes.name}}" type="text">
+  </div>
+  
+  <div class="form-group">
+    <label>Alkupäivä</label>
+    <input name="startdate" class="form-control"
+	   value="{{attributes.startdate}}" type="date">
+  </div>
+  
+  <div class="form-group">
+    <label>Loppupäivä</label>
+    <input name="enddate" class="form-control"
+	   value="{{attributes.enddate}}" type="date">
+  </div>
+  
+  <div class="form-group">
+    <label>Anomuumi?</label>
+    <select name="anonymous">
+      <option value="0"
+	      {% if attributes.anonymous == 0 %}
+	      selected
+	      {% endif %}
+	      >Ei 
+      <option value="1"
+	      {% if attributes.anonymous == 1 %}
+	      selected
+	      {% endif %}
+	      >Kyllä
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Tyyppi</label>
+    <select name="poll_type_id">
+      {% for poll_type in poll_types %}
+      <option value="{{poll_type.id}}"
+	      {% if attributes.poll_type_id == poll_type.id %}
+	      selected
+	      {% endif %}
+	      >{{poll_type.name}}
+      {% endfor %}
+    </select>
+  </div>
+  
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Päivitä</button>
+  </div>
+
+</form>
+
+{% endblock %}

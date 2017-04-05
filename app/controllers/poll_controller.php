@@ -2,6 +2,8 @@
 
 class PollController extends BaseController {
 
+    # XXX enforcing access mostly missing
+    
     public static function index() {
         $polls = Poll::all();
         View::make('poll/index.html',
@@ -12,6 +14,12 @@ class PollController extends BaseController {
         $poll = Poll::find($id);
         View::make('poll/show.html',
                    array('poll' => $poll));
+    }
+
+    public static function edit($id) {
+        $poll = Poll::find($id);
+        View::make('poll/edit.html',
+                   array('attributes' => $poll));
     }
 
     # vote on a poll
@@ -64,6 +72,43 @@ class PollController extends BaseController {
     
     } # store
     
+    public static function update($id) {
+        $params = $_POST;
+        $attributes = array(
+            'id' => $id,
+            'person_id' => $params['person_id'],
+            'name' => $params['name'],
+            'startdate' => $params['startdate'],
+            'enddate' => $params['enddate'],
+            'anonymous' => $params['anonymous'],
+            'poll_type_id' => $params['poll_type_id']
+        );
+        
+        $poll = new Poll($attributes);
+        $errors = $poll->errors();
+
+        if (count($errors) == 0) {
+            $poll->update();
+            Redirect::to('/poll/' . $poll->id,
+                         array('message' => 'Äänestyksen tietoja on päivitetty.'));
+        } else {
+            $persons = Person::all();
+            $poll_types = PollType::all();
+            View::make('poll/edit.html',
+                       array('persons' => $persons, 'poll_types' => $poll_types,
+                             'errors' => $errors, 'attributes' => $attributes));
+        }
+    
+    } # update
+    
+    public static function destroy($id) {
+        $poll = new Poll(array('id' => $id));
+        $poll->destroy();
+        Redirect::to('/poll',
+                     array('message' =>
+                           'Äänestys ja kaikki siihen liittyvät tiedot on poistettu onnistuneesti!'));
+    }
+
 } # PollController
 
 ?>

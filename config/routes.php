@@ -30,7 +30,7 @@ $routes->get('/logout', function() {
     PersonController::logout();
 });
 
-$routes->post('/person', function(){
+$routes->post('/person', function() {
     PersonController::store();
 });
 
@@ -64,7 +64,6 @@ $routes->get('/poll/:id', function($id){
     PollController::show($id);
 });
 
-/* XXX does not work, yet */
 $routes->get('/poll/:id/edit', function($id) {
     PollController::edit($id);
 });
@@ -79,6 +78,14 @@ $routes->get('/poll/results/:id', function($id) {
 
 $routes->post('/poll', function(){
     PollController::store();
+});
+
+$routes->post('/poll/:id/edit', function($id){
+    PollController::update($id);
+});
+
+$routes->post('/poll/:id/destroy', function($id){
+    PollController::destroy($id);
 });
 
 $routes->post('/vote', function(){
