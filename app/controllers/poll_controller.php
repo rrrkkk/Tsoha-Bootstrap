@@ -21,7 +21,8 @@ class PollController extends BaseController {
         $persons = Person::all();
         $poll_types = PollType::all();
         View::make('poll/edit.html',
-                   array('attributes' => $poll));
+                   array('attributes' => $poll,
+                         'persons' => $persons, 'poll_types' => $poll_types));
     }
 
     # vote on a poll
