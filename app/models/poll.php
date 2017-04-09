@@ -37,11 +37,11 @@ class Poll extends BaseModel {
     }
 
     public static function all() {
-        # if not logged in, only show those votes which are anonymous
+        # if not logged in, only show those votes which are already past or anonymous
         if (Person::user_is_logged_in()) {
-            $where_and = '';
+            $where = '';
         } else {
-            $where_and = 'AND anonymous';
+            $where = 'WHERE enddate < NOW() OR anonymous';
         }
         $sql = "SELECT poll.id AS id, person_id, poll.name AS name,
                        startdate, enddate, anonymous, poll_type_id,
@@ -49,7 +49,7 @@ class Poll extends BaseModel {
                 FROM poll
                 INNER JOIN person ON person.id = person_id
                 INNER JOIN poll_type ON poll_type.id = poll_type_id
-                WHERE enddate < NOW() $where_and";
+                $where";
         $query = DB::connection()->prepare($sql);
         $query->execute();
         $rows = $query->fetchAll();
