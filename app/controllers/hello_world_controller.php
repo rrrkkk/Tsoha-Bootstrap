@@ -33,5 +33,9 @@ class HelloWorldController extends BaseController{
         $errors = $poll->errors();
         
         Kint::dump($errors);
+
+        Kint::dump($_SERVER);
+        Kint::dump($_REQUEST);
+        Kint::dump($GLOBALS);
     }
 }
