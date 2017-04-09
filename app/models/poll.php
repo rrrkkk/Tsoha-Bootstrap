@@ -14,9 +14,17 @@ class Poll extends BaseModel {
             $nowdate = date('Y-m-d');
             # can vote: depends on enddate, user logged in & anonymous
             $this->can_vote = true;
-            if ($this->startdate > $nowdate) { $this->can_vote = false; }
-            if ($this->enddate < $nowdate) { $this->can_vote = false; }
-            if ((! $this->anonymous) && (! Person::user_is_logged_in())) { $this->can_vote = false; }
+            if ($this->startdate > $nowdate) {
+                $this->can_vote = false;
+            }
+            if ($this->enddate < $nowdate) {
+                $this->can_vote = false;
+                # black magic - if past end date, force different type so that all results are shown.
+                $this->poll_type_id = 2;
+            }
+            if ((! $this->anonymous) && (! Person::user_is_logged_in())) {
+                $this->can_vote = false;
+            }
             if (Vote::user_is_voted($this->id)) { $this->can_vote = false; }
             # can edit: only owner or admin can edit
             $this->can_edit = false;
