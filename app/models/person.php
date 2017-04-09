@@ -142,7 +142,7 @@ class Person extends BaseModel {
         $query4->execute();
     }
 
-    public function authenticate($username, $password_plain) {
+    public static function authenticate($username, $password_plain) {
         $person = Person::find_username($username);
 
         if ($person == null) {
@@ -161,7 +161,7 @@ class Person extends BaseModel {
         
     } # authenticate
 
-    public function current_user() {
+    public static function current_user() {
         if(isset($_SESSION['person'])) {
             $person_id = $_SESSION['person'];
             $person = Person::find($person_id);
@@ -170,7 +170,7 @@ class Person extends BaseModel {
         return null;
     }
 
-    public function user_is_admin() {
+    public static function user_is_admin() {
         $person = Person::current_user();
         if ($person == null) {
             return false;
@@ -181,7 +181,7 @@ class Person extends BaseModel {
         return false;
     }
 
-    public function user_is_logged_in() {
+    public static function user_is_logged_in() {
         $person = Person::current_user();
         if ($person == null) {
             return false;

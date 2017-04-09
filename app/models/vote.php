@@ -35,7 +35,7 @@ class Vote extends BaseModel {
     } # save
 
     # is current user already voted? also takes session into account
-    public function user_is_voted($poll_id) {
+    public static function user_is_voted($poll_id) {
         # first, session
         $session_key = 'voted' . $poll_id;
         if (isset($_SESSION[$session_key])) {
