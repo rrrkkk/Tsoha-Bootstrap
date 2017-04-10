@@ -3,7 +3,7 @@
 class PersonController extends BaseController {
 
     public static function index() {
-        BaseController::check_admin();
+        self::check_admin();
         $persons = Person::all();
         View::make('person/index.html', array('persons' => $persons));
     }
