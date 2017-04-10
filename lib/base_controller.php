@@ -13,6 +13,13 @@ class BaseController{
         }
     }
 
+    # check a flag, if not true, barf
+    public static function check_flag_true ($flag) {
+        if (! $flag) {
+            View::make('main/error.html');
+        }
+    }
+
     public static function check_logged_in(){
         // Toteuta kirjautumisen tarkistus tähän.
         // Jos käyttäjä ei ole kirjautunut sisään, ohjaa hänet toiselle sivulle (esim. kirjautumissivulle).

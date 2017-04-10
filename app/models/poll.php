@@ -3,7 +3,7 @@
 class Poll extends BaseModel {
     public $id, $person_id, $name, $startdate, $enddate, $anonymous, $poll_type_id;
     public $person_name, $poll_type_name; # these are derived from elsewhere in the db.
-    public $can_vote, $can_edit; # these are based on date and users' permissions
+    public $can_vote, $can_edit, $can_view; # these are based on date and users' permissions
     public $validators;
 
     public function __construct($attributes){
@@ -13,17 +13,23 @@ class Poll extends BaseModel {
             # if a known poll, fill in some extra fields
             $nowdate = date('Y-m-d');
             # can vote: depends on enddate, user logged in & anonymous
+            # can view: past or anonymous polls always viewable, otherwise needs to be logged in
             $this->can_vote = true;
+            $this->can_view = false;
             if ($this->startdate > $nowdate) {
                 $this->can_vote = false;
             }
             if ($this->enddate < $nowdate) {
                 $this->can_vote = false;
+                $this->can_view = true;
                 # black magic - if past end date, force different type so that all results are shown.
                 $this->poll_type_id = 2;
             }
             if ((! $this->anonymous) && (! Person::user_is_logged_in())) {
                 $this->can_vote = false;
+            }
+            if ($this->anonymous) {
+                $this->can_view = true;
             }
             if (Vote::user_is_voted($this->id)) { $this->can_vote = false; }
             # can edit: only owner or admin can edit
@@ -32,6 +38,7 @@ class Poll extends BaseModel {
             if ($current_user) {
                 if ($this->person_id == $current_user->id) { $this->can_edit = true; }
                 if (Person::user_is_admin()) { $this->can_edit = true; }
+                $this->can_view = true;
             }
         }
     }

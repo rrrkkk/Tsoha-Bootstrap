@@ -12,12 +12,14 @@ class PollController extends BaseController {
 
     public static function show($id) {
         $poll = Poll::find($id);
+        self::check_flag_true($poll->can_view);
         View::make('poll/show.html',
                    array('poll' => $poll));
     }
 
     public static function edit($id) {
         $poll = Poll::find($id);
+        self::check_flag_true($poll->can_edit);
         $persons = Person::all();
         $poll_types = PollType::all();
         View::make('poll/edit.html',
@@ -42,6 +44,7 @@ class PollController extends BaseController {
     }
 
     public static function create() {
+        self::check_logged_in();
         $persons = Person::all();
         $poll_types = PollType::all();
         View::make('poll/new.html',
@@ -49,6 +52,7 @@ class PollController extends BaseController {
     }
 
     public static function store() {
+        self::check_logged_in();
         $params = $_POST;
         $attributes = array(
             'person_id' => $params['person_id'],
@@ -76,6 +80,7 @@ class PollController extends BaseController {
     } # store
     
     public static function update($id) {
+        self::check_logged_in();
         $params = $_POST;
         $attributes = array(
             'id' => $id,
@@ -105,6 +110,7 @@ class PollController extends BaseController {
     } # update
     
     public static function destroy($id) {
+        self::check_logged_in();
         $poll = new Poll(array('id' => $id));
         $poll->destroy();
         Redirect::to('/poll',
