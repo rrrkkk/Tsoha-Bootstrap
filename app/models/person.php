@@ -198,7 +198,7 @@ class Person extends BaseModel {
     }
 
     # basic idea is to validate new pw only if we are actually setting it
-    # if:
+    # so, if:
     #  password_plain longer than 1, do check.
     #  if empty:
     #   check only if password also empty.
