@@ -1,7 +1,5 @@
 
-Muokkaus ei toimi? - Käyttäjä
+Tilastot
 
 Pääsynvalvonta kaikkiin kontrollereihin
-
-Tilastot
 
