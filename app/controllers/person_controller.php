@@ -58,7 +58,7 @@ class PersonController extends BaseController {
             'name' => $params['name'],
             'username' => $params['username'],
             'email' => $params['email'],
-            'password' => '', $params['password'],
+            'password' => $params['password'],
             'password_plain' => $params['password_plain'],
             'admin' => $params['admin']
         );
