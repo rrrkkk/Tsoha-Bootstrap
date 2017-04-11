@@ -111,7 +111,7 @@ class Person extends BaseModel {
         $query1->bindValue(':admin', $this->admin, PDO::PARAM_BOOL);
         $query1->bindValue(':id', $this->id, PDO::PARAM_INT);
         $query1->execute();
-        if (strlen ($this->password) > 0) {
+        if (strlen ($this->password_plain) > 0) {
             $this->password = hash("sha256", $this->password_plain); # XXX this is a bootleg - no salt
             $sql2 = 'UPDATE person SET password = :password WHERE id = :id';
             $query2 = DB::connection()->prepare($sql2);
