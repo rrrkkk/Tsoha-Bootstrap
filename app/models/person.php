@@ -211,6 +211,7 @@ class Person extends BaseModel {
         if ($len == 0) {
             return self::validate_strlen($this->password_plain, 6, false, "Liian lyhyt salasana");
         }
+        return array();
     }
 
 }
