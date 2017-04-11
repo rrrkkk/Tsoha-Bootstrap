@@ -6,7 +6,7 @@ class Person extends BaseModel {
 
     public function __construct($attributes){
         parent::__construct($attributes);
-        $this->validators = array('validate_name', 'validate_username', 'validate_password_plain');
+        $this->validators = array('validate_name', 'validate_username', 'validate_password');
     }
 
     public static function all() {
@@ -190,15 +190,27 @@ class Person extends BaseModel {
     }
 
     public function validate_name() {
-        return BaseModel::validate_strlen($this->name, 5);
+        return self::validate_strlen($this->name, 5, true, "Liian lyhyt nimi");
     }
 
     public function validate_username() {
-        return BaseModel::validate_strlen($this->username, 2);
+        return self::validate_strlen($this->username, 2, true, "Liian lyhyt käyttäjätunnus");
     }
 
-    public function validate_password_plain() {
-        return BaseModel::validate_strlen($this->password_plain, 6, false);
+    # basic idea is to validate new pw only if we are actually setting it
+    # if:
+    #  password_plain longer than 1, do check.
+    #  if empty:
+    #   check only if password also empty.
+    public function validate_password() {
+        $len_plain = strlen($this->password_plain);
+        if ($len_plain > 1) {
+            return self::validate_strlen($this->password_plain, 6, false, "Liian lyhyt salasana");
+        }
+        $len = strlen($this->password);
+        if ($len == 0) {
+            return self::validate_strlen($this->password_plain, 6, false, "Liian lyhyt salasana");
+        }
     }
 
 }

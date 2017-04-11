@@ -13,7 +13,10 @@
 </div>
 {% endif %}
 
-<form method="post" action="{{base_path}}/person/{{attributes.id}}/edit">
+<form method="post"
+      action="{{base_path}}/person/{{attributes.id}}/edit">
+
+  <input name="password" type="hidden" value="{{attributes.password}}">
 
   <div class="form-group">
     <label>Nimi</label>

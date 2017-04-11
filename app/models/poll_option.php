@@ -89,8 +89,8 @@ class PollOption extends BaseModel {
         $query2->execute();
     }
 
-     public function validate_name() {
-        return BaseModel::validate_strlen($this->name, 1);
+    public function validate_name() {
+        return self::validate_strlen($this->name, 1, true, "Liian lyhyt nimi");
     }
 
 }

@@ -167,7 +167,7 @@ class Poll extends BaseModel {
     }
 
     public function validate_name() {
-        return BaseModel::validate_strlen($this->name, 5);
+        return self::validate_strlen($this->name, 5, true, "Liian lyhyt nimi");
     }
 
     public function validate_startdate() {
