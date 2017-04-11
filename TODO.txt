@@ -1,5 +1,7 @@
 
-Pääsynvalvonta kontrollereihin
+Muokkaus ei toimi? - Käyttäjä
+
+Pääsynvalvonta kaikkiin kontrollereihin
 
 Tilastot
 
