@@ -43,6 +43,15 @@ class PollController extends BaseController {
                    array('poll' => $poll, 'poll_results' => $poll_results));
     }
 
+    # show poll stats
+    public static function results($id) {
+        $poll = Poll::find($id);
+        self::check_flag_true($poll->can_edit);
+        $poll_stats = PollStat::all($id);
+        View::make('poll/stats.html',
+                   array('poll' => $poll, 'poll_stats' => $poll_stats));
+    }
+
     public static function create() {
         self::check_logged_in();
         $persons = Person::all();

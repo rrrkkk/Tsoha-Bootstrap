@@ -76,6 +76,10 @@ $routes->get('/poll/results/:id', function($id) {
     PollController::results($id);
 });
 
+$routes->get('/poll/stats/:id', function($id) {
+    PollController::stats($id);
+});
+
 $routes->post('/poll', function(){
     PollController::store();
 });

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Äänestystilastot</h1>
+<h2>{{poll.name}}</h2>
+
+<table class="table table-striped table-bordered">
+  
+  <thead>
+    <tr>
+      <th>Päivä</th>
+      <th>Äänet</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for poll_stat in poll_stats %}
+    <tr>
+      <td>{{poll_stat.date}}</td>
+      <td>{{poll_stat.votes}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+
+</table>
+
+{% endblock %}
