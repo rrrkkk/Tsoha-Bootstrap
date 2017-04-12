@@ -44,7 +44,7 @@ class PollController extends BaseController {
     }
 
     # show poll stats
-    public static function results($id) {
+    public static function stats($id) {
         $poll = Poll::find($id);
         self::check_flag_true($poll->can_edit);
         $poll_stats = PollStat::all($id);
