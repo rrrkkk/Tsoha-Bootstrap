@@ -20,7 +20,7 @@ class PollStat extends BaseModel {
         $rows1 = $query1->fetchAll();
 
         foreach ($rows1 as $row1) {
-            $this_date = substr($row1->['time'], 0, 10);
+            $this_date = substr($row1['time'], 0, 10);
             if ($this_date != $prev_date) {
                 if ($poll_stat != null) {
                     $poll_stats[] = $poll_stat;
