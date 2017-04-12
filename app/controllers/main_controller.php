@@ -6,6 +6,7 @@ class MainController extends BaseController{
         View::make('main/index.html');
     }
 
+    /* irrelevant now
     public static function vote_list(){
         View::make('suunnitelmat/vote_list.html');
     }
@@ -21,12 +22,13 @@ class MainController extends BaseController{
     public static function login(){
         View::make('suunnitelmat/login.html');
     }
+    */
 
     public static function sandbox(){
         // Testaa koodiasi täällä
-        $riku = Person::find(1);
+        /* $riku = Person::find(1);
         $persons = Person::all();
         Kint::dump($persons);
-        Kint::dump($riku);
+        Kint::dump($riku); */
     }
 }

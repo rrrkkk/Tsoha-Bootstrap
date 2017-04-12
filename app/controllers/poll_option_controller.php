@@ -19,16 +19,19 @@ class PollOptionController extends BaseController {
     public static function edit($id) {
         $poll_option = PollOption::find($id);
         $poll = Poll::find($poll_option->poll_id);
+        self::check_flag_true($poll->can_edit);
         View::make('poll_option/edit.html',
                    array('attributes' => $poll_option, 'poll' => $poll));
     }
 
     public static function create($poll_id) {
         $poll = Poll::find($poll_id);
+        self::check_flag_true($poll->can_edit);
         View::make('poll_option/new.html', array('poll' => $poll));
     }
 
     public static function store() {
+        self::check_logged_in();
         $params = $_POST;
         $attributes = array(
             'poll_id' => $params['poll_id'],
@@ -53,6 +56,7 @@ class PollOptionController extends BaseController {
     } # store
     
     public static function update($id) {
+        self::check_logged_in();
         $params = $_POST;
         $attributes = array(
             'id' => $id,
@@ -78,6 +82,7 @@ class PollOptionController extends BaseController {
     } # update
     
     public static function destroy($id) {
+        self::check_logged_in();
         $poll_option = new PollOption(array('id' => $id));
         $poll_option->destroy();
         Redirect::to('/poll', array('message' => 'Äänestysvaihtoehto ja kaikki siihen liittyvät tiedot poistettu onnistuneesti!'));

@@ -2,8 +2,6 @@
 
 class PollController extends BaseController {
 
-    # XXX enforcing access mostly missing
-    
     public static function index() {
         $polls = Poll::all();
         View::make('poll/index.html',
@@ -30,6 +28,7 @@ class PollController extends BaseController {
     # vote on a poll
     public static function vote($id) {
         $poll = Poll::find($id);
+        self::check_flag_true($poll->can_vote);
         $poll_options = PollOption::all($id);
         View::make('poll/vote.html',
                    array('poll' => $poll, 'poll_options' => $poll_options));

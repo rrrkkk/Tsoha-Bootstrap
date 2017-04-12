@@ -1,5 +1,0 @@
-
-Tilastot
-
-Pääsynvalvonta kaikkiin kontrollereihin
-

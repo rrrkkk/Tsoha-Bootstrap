@@ -2,6 +2,7 @@
 
 class HelloWorldController extends BaseController{
 
+    /* irrelevant now 
     public static function index(){
         View::make('suunnitelmat/index.html');
     }
@@ -21,6 +22,7 @@ class HelloWorldController extends BaseController{
     public static function login(){
         View::make('suunnitelmat/login.html');
     }
+    */
 
     public static function sandbox(){
         // Testaa koodiasi täällä

@@ -22,6 +22,6 @@ class VoteController extends BaseController {
     
     } # store
     
-} # PollController
+} # VoteController
 
 ?>
