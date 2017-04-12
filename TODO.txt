@@ -1,0 +1,3 @@
+
+Dokumentaatioon järjestelmän-yleisrakenne-osio ja käyttöliittymän ja järjestelmän komponentteja kuvaava kaavio.
+
