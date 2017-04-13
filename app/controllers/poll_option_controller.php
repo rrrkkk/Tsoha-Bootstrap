@@ -83,9 +83,11 @@ class PollOptionController extends BaseController {
     
     public static function destroy($id) {
         self::check_logged_in();
-        $poll_option = new PollOption(array('id' => $id));
+        $poll_option = new PollOption::find($id);
+        $poll_id = $poll_option->poll_id;
         $poll_option->destroy();
-        Redirect::to('/poll', array('message' => 'Äänestysvaihtoehto ja kaikki siihen liittyvät tiedot poistettu onnistuneesti!'));
+        Redirect::to('/poll_option/poll/' . $poll_id,
+                     array('message' => 'Äänestysvaihtoehto ja kaikki siihen liittyvät tiedot poistettu onnistuneesti!'));
     }
     
 } # PollOptionController
