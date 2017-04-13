@@ -70,7 +70,7 @@ class PollOptionController extends BaseController {
 
         if (count($errors) == 0) {
             $poll_option->update();
-            Redirect::to('/poll_option/' . $poll_option->id,
+            Redirect::to('/poll_option/poll/' . $poll_option->poll_id,
                          array('message' => 'Äänestysvaihtoehtoa on päivitetty.'));
         } else {
             $poll = Poll::find($poll_option->poll_id);
