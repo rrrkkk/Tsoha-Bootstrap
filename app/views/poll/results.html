@@ -3,6 +3,12 @@
 <h1>Äänestyksen tulokset</h1>
 <h2>{{poll.name}}</h2>
 
+{% if message %}
+<div class="alert alert-success">
+  {{message}}
+</div>
+{% endif %}
+
 {% if poll.poll_type_id == 1 %}
 
 <p>Kärkitulokset

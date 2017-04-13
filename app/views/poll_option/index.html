@@ -3,6 +3,12 @@
 
 <h1>Äänestysvaihtoehdot äänestykseen {{poll.name}}</h1>
 
+{% if message %}
+<div class="alert alert-success">
+  {{message}}
+</div>
+{% endif %}
+
 <p>
   <a href="{{base_path}}/poll_option/new/{{poll.id}}" class="btn btn-success">Lisää äänestysvaihtoehto</a>
 </p>

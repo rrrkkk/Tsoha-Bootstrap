@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Henkilön tiedot</h1>
+
+{% if message %}
+<div class="alert alert-success">
+  {{message}}
+</div>
+{% endif %}
+
 <!-- Painikkeet tähän -->
 <form method="post" action="{{base_path}}/person/{{person.id}}/destroy" style="display: inline-block;">
   <button type="submit" class="btn btn-danger">
