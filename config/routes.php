@@ -120,23 +120,9 @@ $routes->post('/poll_option/:id/edit', function($id){
     PollOptionController::update($id);
 });
 
-/*
-$routes->get('/vote', function() {
-    HelloWorldController::vote_list();
+$routes->post('/poll_option/:id/destroy', function($id){
+    PollOptionController::destroy($id);
 });
-
-$routes->get('/vote/1', function() {
-    HelloWorldController::vote_show();
-});
-
-$routes->get('/vote/edit/1', function() {
-    HelloWorldController::vote_edit();
-});
-
-$routes->get('/login', function() {
-    HelloWorldController::login();
-});
-*/
 
 $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();

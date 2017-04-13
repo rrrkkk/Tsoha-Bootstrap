@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
   <h1>Äänestysvaihtoehdon tiedot</h1>
-  <form method="post" action="{{base_path}}/poll_option/{{person.id}}/destroy" style="display: inline-block;">
+  <form method="post" action="{{base_path}}/poll_option/{{poll_option.id}}/destroy" style="display: inline-block;">
     <button type="submit" class="btn btn-danger">
       Poista tämä äänestysvaihtoehto ja kaikki siihen liittyvät tiedot
     </button>
