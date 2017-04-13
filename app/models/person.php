@@ -124,6 +124,10 @@ class Person extends BaseModel {
     # destroy person and all related data. order is important.
     public function destroy() {
         $person_id = $this->id;
+        $sql0 = "DELETE FROM voters WHERE poll_id  IN (SELECT id FROM poll WHERE person_id = :id)";
+        $query0 = DB::connection()->prepare($sql0);
+        $query0->bindValue(':id', $person_id, PDO::PARAM_INT);
+        $query0->execute();
         $sql2 = "DELETE FROM vote WHERE poll_id IN (SELECT id FROM poll WHERE person_id = :id)";
         $query2 = DB::connection()->prepare($sql2);
         $query2->bindValue(':id', $person_id, PDO::PARAM_INT);

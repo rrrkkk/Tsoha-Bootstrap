@@ -152,6 +152,10 @@ class Poll extends BaseModel {
     # destroy poll and all related data. order is important.
     public function destroy() {
         $poll_id = $this->id;
+        $sql0 = "DELETE FROM voters WHERE poll_id  = :id";
+        $query0 = DB::connection()->prepare($sql0);
+        $query0->bindValue(':id', $poll_id, PDO::PARAM_INT);
+        $query0->execute();
         $sql2 = "DELETE FROM vote WHERE poll_id  = :id";
         $query2 = DB::connection()->prepare($sql2);
         $query2->bindValue(':id', $poll_id, PDO::PARAM_INT);
