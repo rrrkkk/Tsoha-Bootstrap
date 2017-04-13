@@ -44,7 +44,7 @@ class PollOptionController extends BaseController {
 
         if (count($errors) == 0) {
             $poll_option->save();
-            Redirect::to('/poll_option/' . $poll_option->id,
+            Redirect::to('/poll_option/poll/' . $poll_option->poll_id,
                          array('message' => 'Äänestysvaihtoehto on lisätty.'));
         } else {
             $poll = Poll::find($poll_option->poll_id);
