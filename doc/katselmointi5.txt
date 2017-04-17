@@ -1,0 +1,53 @@
+
+TSOHA Koodikatselmointi, viikko 5
+
+Katselmoija: Riku Kalinen
+
+
+1. Katselmoitava työ
+
+GitHub - linkki: https://github.com/woltsu/Tsoha-Bootstrap
+
+Linkki sovellukseen: http://wolli.users.cs.helsinki.fi/huuto/
+
+Ladattu (git clone) XXX
+
+Testejä ajettu Firefoxilla 17.4.2017 klo 15:50 - XXX
+
+
+2. Tehdyt toimenpiteet
+
+Seurattu linkkiä labtoolista.
+
+XXX Luettu dokumentaatio.pdf.
+
+XXX Katsottu tree juurihakemistosta.
+
+XXX Käyty läpi Login - sivu: http://nykanenj.users.cs.helsinki.fi/Tsoha/login
+
+XXX Katsottu config/routes.php.
+
+XXX Katsottu sql/create_tables.sql ja sql/add_test_data.sql.
+
+XXX Katsottu hakemisto app/ alihakemistoineen ja sieltä relevantit tiedostot.
+
+3. Huomioita
+
+3.1 Hyvää
+
+Sovelluksen linkki toimii ja on yhtenevä Labtoolissa ja README.md:ssä.
+
+XXX Koodi on ymmärrettävää.
+
+XXX MVC-mallia on noudatettu.
+
+XXX Visuaalinen ulkoasu on siisti.
+
+XXX Navigaatiopalkki toimii.
+
+XXX Järjestelmän peruskomponentit ovat paikallaan ja asennettuina tuotantopalvelimelle.
+
+3.2 Kehitettävää
+
+XXX
+
