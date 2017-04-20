@@ -10,26 +10,40 @@ GitHub - linkki: https://github.com/woltsu/Tsoha-Bootstrap
 
 Linkki sovellukseen: http://wolli.users.cs.helsinki.fi/huuto/
 
-Ladattu (git clone) XXX
+Ladattu (git clone) 20.4.2017 klo 12:36.
 
-Testejä ajettu Firefoxilla 17.4.2017 klo 15:50 - XXX
+Testejä ajettu Firefoxilla 17.4.2017 klo 15:50 - 20.4.2017 klo 13:32.
 
 
 2. Tehdyt toimenpiteet
 
 Seurattu linkkiä labtoolista.
 
-XXX Luettu dokumentaatio.pdf.
+Luettu dokumentaatio.pdf.
 
-XXX Katsottu tree juurihakemistosta.
+Katsottu tree juurihakemistosta.
 
-XXX Käyty läpi Login - sivu: http://nykanenj.users.cs.helsinki.fi/Tsoha/login
+Katsottu config/routes.php.
 
-XXX Katsottu config/routes.php.
+Katsottu sql/create_tables.sql ja sql/add_test_data.sql.
 
-XXX Katsottu sql/create_tables.sql ja sql/add_test_data.sql.
+Katsottu hakemisto app/ alihakemistoineen ja sieltä relevantit tiedostot.
 
-XXX Katsottu hakemisto app/ alihakemistoineen ja sieltä relevantit tiedostot.
+Katsottu läpi aloitussivu: http://wolli.users.cs.helsinki.fi/huuto/
+
+Katsottu "Tuotteet" - sivu kirjautumatta: .../esitteet/
+
+Katsottu "Kirjaudu sisään" - sivu: .../login
+
+Katsottu "Tuotteet" - sivu kirjautuneena (admin)
+Tehty tarjous.
+
+Katsottu "Tuoteluokat" - sivu kirjautuneena (admin).
+Kokeiltu lisäys ja poisto.
+Yritetty sivulle kirjautumatta.
+
+Katsottu "Tuotteet" - sivu kirjautuneena (essi...)
+Tehty tarjous.
 
 3. Huomioita
 
@@ -37,17 +51,46 @@ XXX Katsottu hakemisto app/ alihakemistoineen ja sieltä relevantit tiedostot.
 
 Sovelluksen linkki toimii ja on yhtenevä Labtoolissa ja README.md:ssä.
 
-XXX Koodi on ymmärrettävää.
+Dokumentaatio on ymmärrettävää.
 
-XXX MVC-mallia on noudatettu.
+Polut (routes.php) ovat loogisia.
 
-XXX Visuaalinen ulkoasu on siisti.
+SQL-tiedostot ovat ymmärrettäviä, samoin koodiin kirjoitetut SQL-lauseet.
 
-XXX Navigaatiopalkki toimii.
+Koodi on ymmärrettävää ja sisennettyä. Nimet ovat loogisia.
 
-XXX Järjestelmän peruskomponentit ovat paikallaan ja asennettuina tuotantopalvelimelle.
+MVC-mallia on noudatettu.
+
+Sovelluksen visuaalinen ulkoasu on siisti.
+
+"Tuotteet" - sivu toimii, samoin siellä olevat linkit.
+
+Navigaatiopalkki toimii.
+
+Järjestelmän peruskomponentit ovat paikallaan ja asennettuina tuotantopalvelimelle.
+
+Kirjauduttaessa tarkastetaan salasana; ainakaan admin ei päässyt väärällä
+salasanalla sisään; oikealla kirjautuminen onnistui kuten pitikin.
+
+"Tuotteet" - sivulle tulee lisää toiminnallisuutta näkyviin kirjauduttaessa.
+
+Tuoteluokkien lisäys ja poisto toimivat. Sivu on suojattu jos sille
+yritetään kirjautumatta :)
 
 3.2 Kehitettävää
 
-XXX
+Ainakin kohde "Miesten juoksukengät" .../esitteet/4:
+- Kohdetta pystyy huutamaan vaikka se on sulkeutunut.
+- Sulkeutunut 2010, lisätty 2017.
 
+Pieniä epätarkkuuksia dokumentaatiossa, esim. kohta :
+6 controllers p.o. app/controllers.
+
+Koodi on kirjoitettu leveäksi (pisin rivi 281 merkkiä).
+Kapealla näytöllä tämä hankaloittaa lukemista.
+
+"Tuotteet" - sivulla luokan valinta toimii mutta vaatii hieman kokeilua:
+- Napissa voisi olla selventävä teksti.
+- "Valitse kaikki luokat" - suoravalinta olisi hip.
+
+Kuvat eivät näy (Firefox, Mac OS Sierra).
