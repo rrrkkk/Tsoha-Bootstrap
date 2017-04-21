@@ -46,6 +46,7 @@ Yritetty sivulle kirjautumatta.
 Katsottu "Tuotteet" - sivu kirjautuneena (essi...)
 Tehty tarjous.
 
+
 3. Huomioita
 
 3.1 Hyvää
