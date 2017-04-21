@@ -11,6 +11,7 @@ GitHub - linkki: https://github.com/woltsu/Tsoha-Bootstrap
 Linkki sovellukseen: http://wolli.users.cs.helsinki.fi/huuto/
 
 Ladattu (git clone) 20.4.2017 klo 12:36.
+- tarkastettu 21.4.2017 klo 09:07 - ei muutoksia
 
 Testejä ajettu Firefoxilla 17.4.2017 klo 15:50 - 20.4.2017 klo 13:32.
 
@@ -49,6 +50,8 @@ Tehty tarjous.
 
 3.1 Hyvää
 
+Kokonaisuutena hyvä.
+
 Sovelluksen linkki toimii ja on yhtenevä Labtoolissa ja README.md:ssä.
 
 Dokumentaatio on ymmärrettävää.
@@ -66,8 +69,6 @@ Sovelluksen visuaalinen ulkoasu on siisti.
 "Tuotteet" - sivu toimii, samoin siellä olevat linkit.
 
 Navigaatiopalkki toimii.
-
-Järjestelmän peruskomponentit ovat paikallaan ja asennettuina tuotantopalvelimelle.
 
 Kirjauduttaessa tarkastetaan salasana; ainakaan admin ei päässyt väärällä
 salasanalla sisään; oikealla kirjautuminen onnistui kuten pitikin.
@@ -94,3 +95,4 @@ Kapealla näytöllä tämä hankaloittaa lukemista.
 - "Valitse kaikki luokat" - suoravalinta olisi hip.
 
 Kuvat eivät näy (Firefox, Mac OS Sierra).
+
