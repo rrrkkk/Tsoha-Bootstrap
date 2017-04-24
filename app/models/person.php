@@ -10,9 +10,9 @@ class Person extends BaseModel {
     }
 
     public static function all() {
-        # return nothing if user not admin
+        # return only logged person if user not admin
         if (! Person::user_is_admin()) {
-            return null;
+            return array(self::current_user());
         }
         $query = DB::connection()->prepare("SELECT * FROM person");
         $query->execute();
